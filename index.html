@@ -132,8 +132,8 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   border: 1px solid rgba(245,230,200,0.4);
-  background: var(--granate);
-  color: var(--crema);
+  background: #ff9100;
+  color: var(--granate);
   transition: all 0.25s ease;
   margin-bottom: 20px;
 }
@@ -960,6 +960,19 @@
     document.getElementById('ranking-' + panel).classList.add('active');
     btn.classList.add('active');
   }
+</script>
+<script>
+document.querySelectorAll(".jugador-chip").forEach(el => {
+  const nombreCompleto = el.textContent.trim();
+  if(nombreCompleto.includes("+")) return; // no tocar plazas libres
+
+  const partes = nombreCompleto.split(" ");
+  if(partes.length >= 2){
+    const nombre = partes[0];
+    const inicial = partes[1].charAt(0).toUpperCase();
+    el.textContent = `${nombre} ${inicial}.`;
+  }
+});
 </script>
 </body>
 </html>

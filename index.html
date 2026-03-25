@@ -7,21 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
+    --naranja: #ff5733;
     --granate: #8B1A2E;
     --granate-dark: #6B1222;
     --granate-light: #A82040;
     --crema: #F5E6C8;
-    --gold: #C9A84C;
+    --gold: #000000;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: #0f0508; color: #fafafa; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+  body { background: #F5E6C8; color: #000000; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1rem 3rem; display: flex; justify-content: space-between; align-items: center;
-    background: rgba(15,5,8,0.92); backdrop-filter: blur(16px);
+    background: #8B1A2E; backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(245,230,200,0.07);
   }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--crema); }
@@ -29,26 +30,26 @@
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { color: rgba(245,230,200,0.5); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--crema); }
-  .nav-wa { background: #25D366; color: #fff; padding: 0.55rem 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s; }
+  .nav-wa { background: #36b163; color: #fff; padding: 0.55rem 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s; }
   .nav-wa:hover { opacity: 0.85; }
 
   /* HERO */
   .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 6rem 2rem 5rem; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0, 0, 0, 0.45) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 20%, rgba(139,26,46,0.2) 0%, transparent 60%); }
-  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(245,230,200,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245,230,200,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(119, 63, 63, 0) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 20%, rgba(139,26,46,0.2) 0%, transparent 60%); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(61, 58, 52, 0) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 230, 200, 0) 1px, transparent 1px); background-size: 60px 60px; }
   .hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; position: relative; animation: fadeUp 0.8s ease both; }
   .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 16vw, 14rem); line-height: 0.88; text-align: center; position: relative; animation: fadeUp 0.8s 0.15s ease both; }
-  .hero-title .liga { color: var(--crema); display: block; }
+  .hero-title .liga { color: var(--granate); display: block; }
   .hero-title .psm { color: var(--granate-light); display: block; text-shadow: 0 0 60px rgba(168, 32, 64, 0.253); }
-  .hero-title .teams { color: transparent; display: block; -webkit-text-stroke: 2px rgba(245,230,200,0.35); }
-  .hero-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; color: rgba(245,230,200,0.5); letter-spacing: 4px; text-transform: uppercase; margin-top: 2rem; position: relative; animation: fadeUp 0.8s 0.3s ease both; }
+  .hero-title .teams { color: transparent; display: block; -webkit-text-stroke: 2px var(--granate); }
+  .hero-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; color: rgba(0, 0, 0, 0.5); letter-spacing: 4px; text-transform: uppercase; margin-top: 2rem; position: relative; animation: fadeUp 0.8s 0.3s ease both; }
   .hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; position: relative; animation: fadeUp 0.8s 0.45s ease both; flex-wrap: wrap; justify-content: center; }
   .btn-primary { background: var(--granate); color: var(--crema); border: none; padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
   .btn-primary:hover { background: var(--granate-light); transform: translateY(-2px); }
-  .btn-wa { background: #25D366; color: #fff; border: none; padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
+  .btn-wa { background: #36b163; color: #fff; border: none; padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
   .btn-wa:hover { opacity: 0.88; transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--crema); border: 1px solid rgba(245,230,200,0.25); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
-  .btn-outline:hover { border-color: var(--crema); background: rgba(245,230,200,0.05); }
+  .btn-outline { background: transparent; color: var(--granate); border: 1px solid rgb(0, 0, 0); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(0, 0, 0, 0.979); }
   .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: fadeUp 0.8s 0.6s ease both; }
   .hero-scroll span { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 3px; color: rgba(245,230,200,0.2); text-transform: uppercase; }
   .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(245,230,200,0.2), transparent); animation: scrollPulse 2s infinite; }
@@ -60,25 +61,29 @@
   .stat-item2 { flex: 1;min-width: 10%;text-align: center;padding: 0.5rem 2.8rem; border-right: 1px solid rgba(245,230,200,0.18);display: flex;flex-direction: column;align-items: center;justify-content: center;}
   .stat-item2 img {width: 40px; height: auto;}
   .stat-item:last-child { border-right: none; }
+  .stat-item2:last-child { border-right: none; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--crema); display: block; line-height: 1; }
   .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.6); }
 
   /* SECTIONS */
   section { padding: 7rem 2rem; max-width: 1200px; margin: 0 auto; }
   .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label2 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--crema); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem; }
   .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.92; color: var(--crema); margin-bottom: 3rem; }
+  .section-label2::before { content: ''; width: 28px; height: 1px; background: var(--crema); }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.92; color: var(--gold); margin-bottom: 3rem; }
   .section-title em { font-style: normal; color: var(--granate-light); }
-  .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(245,230,200,0.08), transparent); }
+  .section-title2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.92; color: var(--crema); margin-bottom: 3rem; }
+  .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.699), transparent); }
 
   /* CALENDAR */
   .calendar-card { background: rgba(139,26,46,0.1); border: 1px solid rgba(139,26,46,0.28); border-left: 3px solid var(--granate); padding: 1.8rem 2.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 2rem; transition: all 0.2s; flex-wrap: wrap; }
   .calendar-card:hover { background: rgba(139,26,46,0.18); border-left-color: var(--granate-light); transform: translateX(4px); }
   .cal-date { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--granate-light); line-height: 1; min-width: 80px; text-align: center; }
-  .cal-month { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: rgba(245,230,200,0.38); text-transform: uppercase; text-align: center; display: block; }
+  .cal-month { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: rgba(26, 25, 24, 0.623); text-transform: uppercase; text-align: center; display: block; }
   .cal-divider { width: 1px; height: 50px; background: rgba(139,26,46,0.4); }
-  .cal-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--crema); letter-spacing: 1px; margin-bottom: 0.25rem; }
-  .cal-info p { font-size: 0.85rem; color: rgba(245,230,200,0.48); font-weight: 300; }
+  .cal-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--granate-light); letter-spacing: 1px; margin-bottom: 0.25rem; }
+  .cal-info p { font-size: 0.85rem; color: rgba(29, 28, 28, 0.842); font-weight: 300; }
   .cal-badge { margin-left: auto; background: var(--granate); color: var(--crema); font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.3rem 0.8rem; white-space: nowrap; }
 
   /* CATS */
@@ -86,55 +91,55 @@
   .cat-card { background: #0f0508; padding: 2.5rem 1.5rem; text-align: center; transition: background 0.2s; position: relative; overflow: hidden; }
   .cat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--granate); transform: scaleX(0); transition: transform 0.2s; }
   .cat-card:hover::after { transform: scaleX(1); }
-  .cat-card:hover { background: rgba(139,26,46,0.12); }
+  .cat-card:hover { background: rgba(139, 26, 47, 0.63); }
   .cat-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--crema); display: block; margin-bottom: 0.4rem; }
   .cat-type { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.32); }
   .cat-fem { background: #0f0508; }
   .cat-fem .cat-name { color: var(--pink); }
 
   /* TABS */
-  .equipos-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 1px solid rgba(245,230,200,0.08); flex-wrap: wrap; }
-  .tab-btn { background: transparent; border: none; padding: 0.8rem 1.4rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.32); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; }
-  .tab-btn.active { color: var(--crema); border-bottom-color: var(--granate-light); }
-  .tab-btn:hover { color: rgba(245,230,200,0.7); }
+  .equipos-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 1px solid rgba(0, 0, 0, 0.932); flex-wrap: wrap; }
+  .tab-btn { background: transparent; border: none; padding: 0.8rem 1.4rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(0, 0, 0, 0.548); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; }
+  .tab-btn.active { color: var(--granate); border-bottom-color: var(--granate-light); }
+  .tab-btn:hover { color:  rgba(139, 26, 47, 0.63) }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
   /* EQUIPO CARDS */
   .equipos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-  .equipo-card { background: rgba(245,230,200,0.02); border: 1px solid rgba(245,230,200,0.07); padding: 1.8rem; transition: all 0.2s; position: relative; overflow: hidden; }
+  .equipo-card { background:  rgba(139, 26, 47, 0.63); border: 1px solid rgba(245,230,200,0.07); padding: 1.8rem; transition: all 0.2s; position: relative; overflow: hidden; }
   .equipo-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--granate); }
-  .equipo-card:hover { background: rgba(139,26,46,0.1); border-color: rgba(139,26,46,0.28); transform: translateY(-3px); }
+  .equipo-card:hover { background: rgba(0, 0, 0, 0.575); border-color: rgba(139,26,46,0.28); transform: translateY(-3px); }
   .equipo-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-  .equipo-escudo { width: 46px; height: 46px; border-radius: 50%; background: var(--granate); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--crema); flex-shrink: 0; }
+  .equipo-escudo { width: 46px; height: 46px; border-radius: 50%; background: var(--crema); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--granate); flex-shrink: 0; }
   .equipo-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--crema); letter-spacing: 1px; margin-bottom: 0.2rem; }
   .equipo-capitan { font-size: 0.75rem; color: rgba(245,230,200,0.38); font-weight: 300; }
   .equipo-capitan strong { color: rgba(245,230,200,0.6); font-weight: 500; }
   .equipo-jugadores { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-  .jugador-chip { background: rgba(245,230,200,0.06); border: 1px solid rgba(245,230,200,0.1); padding: 0.18rem 0.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; color: rgba(245,230,200,0.52); letter-spacing: 0.5px; }
-  .jugador-chip.libre { border-style: dashed; color: rgba(245,230,200,0.22); }
+  .jugador-chip { background: rgba(245, 230, 200, 0.623); border: 1px solid rgba(218, 35, 29, 0.1); padding: 0.18rem 0.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; color: rgba(5, 5, 5, 0.52); letter-spacing: 0.5px; }
+  .jugador-chip.libre { border-style: dashed; color: rgba(0, 0, 0, 0.747); background-color: #00ff37;}
   .equipo-meta { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(245,230,200,0.05); display: flex; align-items: center; justify-content: space-between; }
-  .equipo-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--granate-light); }
+  .equipo-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--crema); }
   .equipo-num span { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; color: rgba(245,230,200,0.28); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: block; line-height: 1; }
-  .slot-libre { border: 1px dashed rgba(245,230,200,0.1) !important; background: transparent !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-direction: column; gap: 0.6rem; min-height: 175px; }
+  .slot-libre { border: 1px dashed rgba(0, 0, 0, 0.322) !important; background: transparent !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-direction: column; gap: 0.6rem; min-height: 175px; }
   .slot-libre::before { display: none !important; }
-  .slot-libre:hover { transform: none !important; background: rgba(245,230,200,0.02) !important; }
+  .slot-libre:hover { transform: none !important; background: rgba(120, 247, 115, 0.555) !important; }
 
   /* RANKING JUGADORES */
   .jugadores-list { display: flex; flex-direction: column; gap: 0.4rem; }
-  .jugador-row { display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.5rem; background: rgba(245,230,200,0.02); border: 1px solid rgba(245,230,200,0.06); transition: all 0.15s; }
-  .jugador-row:hover { background: rgba(139,26,46,0.08); border-color: rgba(139,26,46,0.2); }
+  .jugador-row { display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.5rem; background: rgb(0, 0, 0); border: 1px solid rgba(245,230,200,0.06); transition: all 0.15s; }
+  .jugador-row:hover { background: rgba(29, 18, 20, 0.966); border-color: rgba(139,26,46,0.2); }
   .jugador-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: rgba(245,230,200,0.15); min-width: 30px; text-align: center; }
-  .jugador-row:nth-child(1) .jugador-pos { color: var(--gold); }
+  .jugador-row:nth-child(1) .jugador-pos { color: #ffeb38; }
   .jugador-row:nth-child(2) .jugador-pos { color: rgba(245,230,200,0.5); }
   .jugador-row:nth-child(3) .jugador-pos { color: #cd7f32; }
   .jugador-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--granate); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; color: var(--crema); flex-shrink: 0; }
   .jugador-info { flex: 1; }
   .jugador-nombre { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--crema); letter-spacing: 0.5px; }
-  .jugador-equipo-tag { font-size: 0.7rem; color: rgba(245,230,200,0.35); font-weight: 300; }
+  .jugador-equipo-tag { font-size: 0.7rem; color: rgba(245, 230, 200, 0.733); font-weight: 300; }
   .jugador-pts { text-align: right; }
   .jugador-pts-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--crema); display: block; line-height: 1; }
-  .jugador-pts-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 1px; color: rgba(245,230,200,0.28); text-transform: uppercase; }
+  .jugador-pts-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 1px; color: rgba(245, 230, 200, 0.623); text-transform: uppercase; }
   .faded { opacity: 0.3; pointer-events: none; }
 
   /* PUNTUACIÓN */
@@ -148,9 +153,9 @@
   .norma-block { background: rgba(245,230,200,0.02); border: 1px solid rgba(245,230,200,0.07); padding: 1.8rem; }
   .norma-block h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--granate-light); margin-bottom: 0.9rem; padding-bottom: 0.7rem; border-bottom: 1px solid rgba(139,26,46,0.25); }
   .norma-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.42rem; }
-  .norma-block li { font-size: 0.87rem; color: rgba(245,230,200,0.7); font-weight: 300; padding-left: 1rem; position: relative; }
+  .norma-block li { font-size: 0.87rem; color: rgba(0, 0, 0, 0.7); font-weight: 300; padding-left: 1rem; position: relative; }
   .norma-block li::before { content: '—'; position: absolute; left: 0; color: var(--granate-light); }
-  .norma-block strong { color: var(--crema); font-weight: 600; }
+  .norma-block strong { color: var(--gold); font-weight: 600; }
 
   /* RETOS */
   .retos-wrap { background: var(--granate-dark); padding: 7rem 2rem; position: relative; overflow: hidden; }
@@ -164,25 +169,25 @@
   .reto-card li { padding-left: 1rem; position: relative; margin-bottom: 0.4rem; }
   .reto-card li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
   .reto-card strong { color: var(--crema); }
-  .prize-banner { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); padding: 2rem 2.5rem; margin-top: 2rem; display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+  .prize-banner { background: rgba(201, 168, 76, 0.733); border: 1px solid rgba(201,168,76,0.22); padding: 2rem 2.5rem; margin-top: 2rem; display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
   .prize-item { text-align: center; }
   .prize-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-  .prize-item h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+  .prize-item h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--crema); margin-bottom: 0.3rem; }
   .prize-item p { font-size: 0.82rem; color: rgba(245,230,200,0.58); }
 
   /* HORARIOS */
   .horarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .horario-card { background: rgba(245,230,200,0.02); border: 1px solid rgba(245,230,200,0.07); padding: 2.5rem; }
+  .horario-card { background: rgba(245,230,200,0.02); border: 1px solid rgba(14, 13, 12, 0.212); padding: 2.5rem; }
   .horario-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--granate-light); margin-bottom: 1.5rem; letter-spacing: 2px; }
-  .time-slot { display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(245,230,200,0.05); }
+  .time-slot { display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
   .time-slot:last-child { border-bottom: none; }
   .time-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--granate); flex-shrink: 0; }
-  .time-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--crema); letter-spacing: 1px; }
+  .time-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--gold); letter-spacing: 1px; }
 
   /* PRECIOS */
   .precio-hero { text-align: center; padding: 4.5rem 2rem; background: linear-gradient(135deg, rgba(139,26,46,0.14) 0%, rgba(139,26,46,0.04) 100%); border: 1px solid rgba(139,26,46,0.2); margin-bottom: 1.5rem; }
-  .precio-amount { font-family: 'Bebas Neue', sans-serif; font-size: 7rem; color: var(--crema); line-height: 1; display: block; }
-  .precio-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,230,200,0.42); margin-bottom: 1.5rem; }
+  .precio-amount { font-family: 'Bebas Neue', sans-serif; font-size: 7rem; color: var(--granate); line-height: 1; display: block; }
+  .precio-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(29, 29, 28, 0.568); margin-bottom: 1.5rem; }
   .precio-includes { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
   .include-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.4rem; }
   .include-item::before { content: '✓'; }
@@ -203,8 +208,8 @@
 
   /* FOOTER */
   footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgba(245,230,200,0.06); }
-  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--crema); opacity: 0.28; margin-bottom: 0.4rem; }
-  .footer-ig { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 3px; color: rgba(245,230,200,0.22); text-transform: uppercase; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--gold); opacity: 0.28; margin-bottom: 0.4rem; }
+  .footer-ig { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 3px; color: rgb(0, 0, 0); text-transform: uppercase; }
 
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -232,7 +237,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Liga <span>PSM</span> Teams</div>
+  <div class="nav-logo">Liga PSM Teams</div>
   <ul class="nav-links">
     <li><a href="#liga">Liga</a></li>
     <li><a href="#equipos">Equipos</a></li>
@@ -240,26 +245,23 @@
     <li><a href="#retos">Retos</a></li>
     <li><a href="#inscripcion">Inscripción</a></li>
   </ul>
-  <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20Liga%20PSM%20Teams%202026" target="_blank" class="nav-wa">💬 Inscríbete</a>
+  <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20Liga%20PSM%20Teams%202026" target="_blank" class="nav-wa">Inscríbete</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-eyebrow">PSM Fantasy Pádel · Temporada 2026</div>
+  <div class="hero-eyebrow">PSM Fantasy · Temporada 2026</div>
   <h1 class="hero-title">
-    <span class="liga">Liga</span>
-    <span class="psm">PSM</span>
-    <span class="teams">Teams</span>
+    <span class="liga">Liga PSM</span><span class="teams">Teams</span>
   </h1>
   <p class="hero-sub">Cierre de inscripciones el 29 de Marzo</p>
   <div class="hero-cta">
     <a href="#liga" class="btn-primary">Ver la liga</a>
-    <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20Liga%20PSM%20Teams%202026" target="_blank" class="btn-wa">💬 Apúntate por WhatsApp</a>
+    <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20Liga%20PSM%20Teams%202026" target="_blank" class="btn-wa">Apúntate por WhatsApp</a>
     <a href="#normativa" class="btn-outline">Normativa</a>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </div>
 
 <!-- STATS -->
@@ -303,9 +305,9 @@
     <div class="cat-card"><span class="cat-name">500</span><span class="cat-type">Masculino</span></div>
     <div class="cat-card"><span class="cat-name">1000</span><span class="cat-type">Masculino</span></div>
     <div class="cat-card"><span class="cat-name">Gran Slam</span><span class="cat-type">Masculino</span></div>
-    <div class="cat-card cat-fem"><span class="cat-name">1000</span><span class="cat-type">Femenino</span></div>
+    <div class="cat-card"><span class="cat-name">1000</span><span class="cat-type">Femenino</span></div>
   </div>
-  <p style="font-size:0.72rem;color:rgba(245,230,200,0.25);margin-top:0.8rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">Máx. 8 equipos por categoría · Mín. 8 jugadores por equipo · La organización puede modificar categorías</p>
+  <p style="font-size:0.72rem;color:rgba(24, 23, 23, 0.555);margin-top:0.8rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">Máx. 8 equipos por categoría · Mín. 8 jugadores por equipo · La organización puede modificar categorías</p>
 </section>
 
 <div class="divider"></div>
@@ -320,7 +322,7 @@
     <button class="tab-btn" onclick="showTab('q500',this)">500</button>
     <button class="tab-btn" onclick="showTab('q1000',this)">1000</button>
     <button class="tab-btn" onclick="showTab('granslam',this)">Gran Slam</button>
-    <button class="tab-btn" onclick="showTab('femenino',this)">1000 Femenino ♀</button>
+    <button class="tab-btn" onclick="showTab('femenino',this)">1000 Femenino</button>
   </div>
 
   <!-- FUTURE -->
@@ -328,8 +330,8 @@
     <div class="equipos-grid">
       <div class="equipo-card">
         <div class="equipo-header">
-          <div class="equipo-escudo">PA</div>
-          <div><div class="equipo-name">Pádel Aces</div><div class="equipo-capitan">Capitán: <strong>Nombre Capitán</strong></div></div>
+          <div class="equipo-escudo">DP</div>
+          <div><div class="equipo-name">Direpack Pádel Team</div><div class="equipo-capitan">Capitán: <strong>Nombre Capitán</strong></div></div>
         </div>
         <div class="equipo-jugadores">
           <span class="jugador-chip">Jugador 1</span><span class="jugador-chip">Jugador 2</span><span class="jugador-chip">Jugador 3</span><span class="jugador-chip">Jugador 4</span><span class="jugador-chip">Jugador 5</span><span class="jugador-chip">Jugador 6</span><span class="jugador-chip">Jugador 7</span><span class="jugador-chip">Jugador 8</span>
@@ -338,8 +340,8 @@
       </div>
       <div class="equipo-card">
         <div class="equipo-header">
-          <div class="equipo-escudo">RS</div>
-          <div><div class="equipo-name">Raquetas Sur</div><div class="equipo-capitan">Capitán: <strong>Nombre Capitán</strong></div></div>
+          <div class="equipo-escudo">MI</div>
+          <div><div class="equipo-name">Minnesota Future</div><div class="equipo-capitan">Capitán: <strong>Nombre Capitán</strong></div></div>
         </div>
         <div class="equipo-jugadores">
           <span class="jugador-chip">Jugador 1</span><span class="jugador-chip">Jugador 2</span><span class="jugador-chip">Jugador 3</span><span class="jugador-chip">Jugador 4</span><span class="jugador-chip">Jugador 5</span><span class="jugador-chip">Jugador 6</span><span class="jugador-chip libre">+ plaza libre</span><span class="jugador-chip libre">+ plaza libre</span>
@@ -348,7 +350,7 @@
       </div>
       <div class="equipo-card slot-libre">
         <span style="font-size:2rem;opacity:0.12;">+</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(0, 0, 0, 0.459);text-transform:uppercase;">Plaza disponible</span>
         <a href="https://wa.me/34600000000" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a>
       </div>
     </div>
@@ -359,8 +361,8 @@
     <div class="equipos-grid">
       <div class="equipo-card">
         <div class="equipo-header">
-          <div class="equipo-escudo">NP</div>
-          <div><div class="equipo-name">Norte Pádel</div><div class="equipo-capitan">Capitán: <strong>Nombre Capitán</strong></div></div>
+          <div class="equipo-escudo">PF</div>
+          <div><div class="equipo-name">Pink Flamingos United</div><div class="equipo-capitan">Capitán: <strong>Nombre Capitán</strong></div></div>
         </div>
         <div class="equipo-jugadores">
           <span class="jugador-chip">Jugador 1</span><span class="jugador-chip">Jugador 2</span><span class="jugador-chip">Jugador 3</span><span class="jugador-chip">Jugador 4</span><span class="jugador-chip">Jugador 5</span><span class="jugador-chip">Jugador 6</span><span class="jugador-chip">Jugador 7</span><span class="jugador-chip">Jugador 8</span>
@@ -422,13 +424,13 @@
     <div class="equipos-grid">
       <div class="equipo-card" style="border-left-color:var(--gold)">
         <div class="equipo-header">
-          <div class="equipo-escudo" style="background:var(--gold);color:#0f0508;">LF</div>
-          <div><div class="equipo-name" style="color:var(--gold)">Las Fieras</div><div class="equipo-capitan">Capitana: <strong>Nombre Capitana</strong></div></div>
+          <div class="equipo-escudo">LF</div>
+          <div><div class="equipo-name">Las Fieras</div><div class="equipo-capitan">Capitana: <strong>Nombre Capitana</strong></div></div>
         </div>
         <div class="equipo-jugadores">
           <span class="jugador-chip">Jugadora 1</span><span class="jugador-chip">Jugadora 2</span><span class="jugador-chip">Jugadora 3</span><span class="jugador-chip">Jugadora 4</span><span class="jugador-chip">Jugadora 5</span><span class="jugador-chip">Jugadora 6</span><span class="jugador-chip">Jugadora 7</span><span class="jugador-chip">Jugadora 8</span>
         </div>
-        <div class="equipo-meta"><div class="equipo-num" style="color:var(--gold)">8<span>jugadoras</span></div><span style="font-size:0.65rem;color:rgba(245,230,200,0.18);font-style:italic;font-family:'Barlow Condensed',sans-serif;">ejemplo</span></div>
+        <div class="equipo-meta"><div class="equipo-num">8<span>jugadoras</span></div><span style="font-size:0.65rem;color:rgba(245,230,200,0.18);font-style:italic;font-family:'Barlow Condensed',sans-serif;">ejemplo</span></div>
       </div>
       <div class="equipo-card slot-libre" style="border-color:rgba(201,168,76,0.15)">
         <span style="font-size:2rem;opacity:0.12;">+</span>
@@ -440,7 +442,7 @@
 
   <!-- RANKING -->
   <div class="section-label" style="margin-top:5rem">Ranking de Retos</div>
-  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--crema);margin-bottom:0.4rem;">Top <span style="color:var(--granate-light)">Jugadores</span></h3>
+  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);margin-bottom:0.4rem;">Top <span style="color:var(--granate-light)">Jugadores</span></h3>
   <p style="font-size:0.8rem;color:rgba(245,230,200,0.3);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
   <div class="jugadores-list">
     <div class="jugador-row">
@@ -553,17 +555,17 @@
   <div class="section-label">Cómo se puntúa</div>
   <h2 class="section-title">Sistema de<br><em>Puntuación</em></h2>
   <div class="puntos-big">
-    <div class="punto-item"><span class="punto-valor">3</span><span class="punto-desc">Partido Ganado</span></div>
-    <div class="punto-item"><span class="punto-valor">1</span><span class="punto-desc">Partido Perdido</span></div>
+    <div class="punto-item"><span class="punto-valor">+3 pt</span><span class="punto-desc">Partido Ganado</span></div>
+    <div class="punto-item"><span class="punto-valor">+1 pt</span><span class="punto-desc">Partido Perdido</span></div>
     <div class="punto-item"><span class="punto-valor">0</span><span class="punto-desc">Incomparecencia</span></div>
   </div>
-  <p style="text-align:center;font-size:0.8rem;color:rgba(245,230,200,0.32);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">Máximo <strong style="color:var(--crema)">6 puntos</strong> por enfrentamiento &nbsp;·&nbsp; <strong style="color:var(--gold)">+1 punto extra</strong> por foto con camiseta oficial</p>
+  <p style="text-align:center;font-size:0.8rem;color:rgba(49, 47, 42, 0.712);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">Máximo <strong style="color:var(--gold)">6 puntos</strong> por enfrentamiento &nbsp;·&nbsp; <strong style="color:var(--gold)">+1 punto extra</strong> por foto con camiseta oficial</p>
 </section>
 
 <!-- RETOS -->
 <div class="retos-wrap" id="retos">
   <div class="retos-inner">
-    <div class="section-label">Durante toda la temporada</div>
+    <div class="section-label2">Durante toda la temporada</div>
     <h2 class="section-title" style="color:var(--crema)">Retos<br><em>PSM Teams</em></h2>
     <p style="color:rgba(245,230,200,0.52);max-width:540px;font-size:0.9rem;line-height:1.7;">Partidos amistosos competitivos entre rivales durante la semana. Juega, etiqueta y suma puntos para tu equipo con <strong style="color:var(--crema)">#RetoPSMteams</strong>.</p>
     <div class="retos-grid">
@@ -607,8 +609,8 @@
         <div class="section-label" style="margin-bottom:0.5rem">Premios — Día de Playoffs</div>
         <p style="font-size:0.8rem;color:rgba(245,230,200,0.48)">Para los campeones del reto de toda la temporada</p>
       </div>
-      <div class="prize-item"><span class="prize-icon">🔥</span><h4>Equipo campeón del reto</h4><p>Parrillada de equipo + 3 cañas por jugador</p></div>
-      <div class="prize-item"><span class="prize-icon">🏓</span><h4>Jugador MVP total</h4><p>Pala de <strong style="color:var(--gold)">gama alta</strong></p></div>
+      <div class="prize-item"><span class="prize-icon">🏆​</span><h4>Equipo campeón del reto</h4><p>Parrillada de equipo + 3 cañas por jugador</p></div>
+      <div class="prize-item"><span class="prize-icon">🏆​</span><h4>Jugador MVP total</h4><p>Pala de <strong style="color:var(--crema)">gama alta</strong></p></div>
     </div>
   </div>
 </div>
@@ -646,18 +648,18 @@
   <div class="precio-hero">
     <span class="precio-amount">25€</span>
     <div class="precio-unit">Inscripción Total — Liga Regular + Playoffs</div>
-    <p style="font-size:0.83rem;color:rgba(245,230,200,0.4);max-width:400px;margin:0 auto;">Abono único antes del inicio de la liga. No se permite participación con pagos pendientes.</p>
+    <p style="font-size:0.83rem;color:rgba(24, 23, 23, 0.4);max-width:400px;margin:0 auto;">Abono único antes del inicio de la liga. No se permite participación con pagos pendientes.</p>
     <div class="precio-includes">
       <span class="include-item">Camiseta personalizada</span>
       <span class="include-item">Liga Regular completa</span>
       <span class="include-item">Playoffs incluidos</span>
     </div>
   </div>
-  <div style="background:rgba(245,230,200,0.02);border:1px solid rgba(245,230,200,0.07);padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+  <div style="background:rgba(0, 0, 0, 0.637);border:1px solid rgba(0, 0, 0, 0.452);padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
     <div>
-      <div class="section-label" style="margin-bottom:0.3rem">Por enfrentamiento</div>
+      <div class="section-label2" style="margin-bottom:0.3rem">Por enfrentamiento</div>
       <span style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--crema);line-height:1;">6.5€</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:2px;color:rgba(245,230,200,0.32);display:block;text-transform:uppercase;">por jugador/a · bolas nuevas incluidas</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:2px;color:rgba(255, 255, 255, 0.514);display:block;text-transform:uppercase;">por jugador/a · bolas nuevas incluidas</span>
     </div>
     <div style="flex:1;min-width:200px;">
       <p style="font-size:0.87rem;color:rgba(245,230,200,0.52);line-height:1.6;">El importe total de la competición debe abonarse antes del inicio. Cada equipo entrega su <strong style="color:var(--crema)">escudo y colores</strong> para la camiseta personalizada.</p>
@@ -674,13 +676,13 @@
 <!-- INSCRIPCIÓN CTA -->
 <div class="inscripcion-wrap" id="inscripcion">
   <div class="inscripcion-inner">
-    <div class="section-label" style="justify-content:center">¿Listo para competir?</div>
-    <h2 class="section-title" style="text-align:center">Apúntate<br>por <em>WhatsApp</em></h2>
+    <div class="section-label2" style="justify-content:center">¿Listo para competir?</div>
+    <h2 class="section-title2" style="text-align:center">Apúntate<br>por <em>WhatsApp</em></h2>
     <p style="font-size:0.9rem;color:rgba(245,230,200,0.48);line-height:1.7;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;">
       Escríbenos para inscribir a tu equipo. Necesitas mínimo <strong style="color:var(--crema)">8 jugadores</strong>, un <strong style="color:var(--crema)">capitán</strong> y todos con cuenta <strong style="color:var(--crema)">Playtomic</strong>. Inscripción <strong style="color:var(--crema)">25€ por jugador</strong>, camiseta personalizada incluida.
     </p>
     <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20inscribir%20mi%20equipo%20en%20la%20Liga%20PSM%20Teams%202026%20%F0%9F%8F%93" target="_blank" class="wa-cta-big">💬 Contactar por WhatsApp</a>
-    <p style="font-size:0.72rem;color:rgba(245,230,200,0.22);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:2rem;">También en Instagram: <strong style="color:rgba(245,230,200,0.38)">@psm_fantasy</strong></p>
+    <p style="font-size:0.72rem;color:rgba(245,230,200,0.22);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:2rem;">También en Instagram: <strong style="color:rgba(255, 255, 255, 0.699)">@psm_fantasy</strong></p>
     
   </div>
 </div>

@@ -23,7 +23,7 @@
     background: #8B1A2E; backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(245,230,200,0.07);
   }
-  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--crema); list-style: none;}
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; color: var(--crema); list-style: none;}
   .nav-logo a { color: var(--crema); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { color: rgba(245,230,200,0.5); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
@@ -45,8 +45,8 @@
   .btn-primary:hover { background: var(--granate-light); transform: translateY(-2px); }
   .btn-wa { background: #36b163; color: #fff; border: none; padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
   .btn-wa:hover { opacity: 0.88; transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--granate); border: 1px solid rgb(0,0,0); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(0,0,0,0.979); }
+  .btn-outline { background: transparent; color: var(--granate); border: 3px solid rgb(0,0,0); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
+  .btn-outline:hover { color:bisque ; background: rgba(0,0,0,0.979); }
 
   .stats-strip { background: var(--granate); padding: 1.5rem 0; }
   .stats-inner { display: flex; justify-content: center; max-width: 1400px; margin: 0 auto; padding: 0 2rem; flex-wrap: wrap; }
@@ -59,13 +59,13 @@
   .stat-item2 img { width: auto; height: auto; max-width: 100%; object-fit: contain; }
   .logo-xl img { max-height: 200px; } .logo-lg img { max-height: 150px; } .logo-md img { max-height: 120px; } .logo-sm img { max-height: 90px; }
 
-  .sponsor-strip{background:var(--granate);padding:1.5rem 0;overflow:hidden;text-align:center;}
-  .sponsor-label{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,230,200,0.6);margin-bottom:0.5rem;}
+  .sponsor-strip{background:var(--granate);padding:1.5rem 0;overflow:hidden;text-align:left; padding:1.5rem 2rem; /* arriba/abajo 1.5rem, izquierda/derecha 2rem */}
+  .sponsor-label{width: 90%;:block;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,230,200,0.6);margin-bottom:1rem;}
   .sponsor-marquee{width:100%;overflow:hidden;position:relative;}
   .sponsor-track{display:flex;align-items:center;gap:4rem;width:max-content;animation:sponsor-scroll 25s linear infinite;}
   .sponsor-item{flex:0 0 auto;display:flex;align-items:center;justify-content:center;min-height:80px;}
   .sponsor-item img{max-width:100%;height:auto;object-fit:contain;}
-  .sponsor-xl img{max-height:200px;} .sponsor-lg img{max-height:150px;} .sponsor-md img{max-height:120px;} .sponsor-sm img{max-height:90px;}
+  .sponsor-xl img{max-height:60px;} .sponsor-lg img{max-height:80px;} .sponsor-md img{max-height:100px;} .sponsor-sm img{max-height:70px;}
   @keyframes sponsor-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
   .sponsor-track:hover{animation-play-state:paused;}
 
@@ -90,10 +90,10 @@
   .cal-badge a {color: rgb(255, 255, 255); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;}
 
   .cats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(245,230,200,0.06); }
-  .cat-card { background: #0f0508; padding: 2.5rem 1.5rem; text-align: center; transition: background 0.2s; position: relative; overflow: hidden; }
+  .cat-card { background: #0f0d05; padding: 2.5rem 1.5rem; text-align: center; transition: background 0.2s; position: relative; overflow: hidden; }
   .cat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--granate); transform: scaleX(0); transition: transform 0.2s; }
   .cat-card:hover::after { transform: scaleX(1); }
-  .cat-card:hover { background: rgba(139,26,47,0.63); }
+  .cat-card:hover { background: rgba(139, 103, 26, 0.63); }
   .cat-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--crema); display: block; margin-bottom: 0.4rem; }
   .cat-type { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.32); }
 
@@ -105,7 +105,7 @@
   .tab-panel.active { display: block; }
 
   .clasificacion-btn { font-family: 'Barlow Condensed', sans-serif; letter-spacing: 2px; font-size: 0.75rem; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid rgba(245,230,200,0.4); background: #ff9100; color: var(--granate); transition: all 0.25s ease; margin-bottom: 20px; }
-  .clasificacion-btn:hover { background: var(--granate-light); color: var(--crema); }
+  .clasificacion-btn:hover { background: rgb(0, 139, 0); color: var(--crema); }
   .equipos-header { margin-bottom: 20px; }
   @media (max-width: 700px) { .equipos-header { flex-direction: column; align-items: flex-start; margin-bottom: 20px; } .clasificacion-btn { margin-top: 0.5rem; } }
 
@@ -168,7 +168,7 @@
   .fr-step-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.5rem;
-    color: var(--granate-light);
+    color: #e0d2b6a4;
     line-height: 1;
     flex-shrink: 0;
     min-width: 42px;
@@ -191,14 +191,14 @@
 
   /* Tabla simulación */
   .fr-tabla-wrap {
-    background: rgba(245,230,200,0.04);
+    background: #f5e6c88e;
     border: 1px solid rgba(245,230,200,0.1);
     overflow: hidden;
     margin-bottom: 1rem;
   }
   .fr-tabla-header {
     padding: 1rem 1.5rem;
-    background: rgba(139,26,46,0.35);
+    background: #F5E6C8;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -211,7 +211,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--crema);
+    color: var(--gold);
   }
   .fr-tabla-cat-badge {
     font-family: 'Barlow Condensed', sans-serif;
@@ -230,7 +230,7 @@
     min-width: 420px;
   }
   .fr-tabla thead tr {
-    background: rgba(139,26,46,0.2);
+    background: #f5e6c86e;
   }
   .fr-tabla th {
     font-family: 'Barlow Condensed', sans-serif;
@@ -238,7 +238,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(245,230,200,0.45);
+    color: rgba(48, 47, 45, 0.45);
     padding: 0.7rem 1rem;
     text-align: center;
     border-bottom: 1px solid rgba(245,230,200,0.08);
@@ -249,12 +249,12 @@
     padding: 0.8rem 1rem;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.88rem;
-    color: rgba(245,230,200,0.75);
+    color: rgba(24, 23, 22, 0.75);
     text-align: center;
-    border-bottom: 1px solid rgba(245,230,200,0.05);
+    border-bottom: 1px solid rgba(44, 43, 41, 0.05);
   }
   .fr-tabla tbody tr:last-child td { border-bottom: none; }
-  .fr-tabla tbody tr:hover { background: rgba(245,230,200,0.04); }
+  .fr-tabla tbody tr:hover { background: rgba(53, 52, 50, 0.04); }
   .fr-td-pos { width: 50px; }
   .fr-td-equipo { text-align: left; display: flex; align-items: center; gap: 0.6rem; }
   .fr-equipo-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
@@ -272,12 +272,12 @@
     justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.9rem;
-    background: rgba(245,230,200,0.1);
-    color: rgba(245,230,200,0.5);
+    background: rgba(56, 55, 53, 0.1);
+    color: rgba(46, 45, 43, 0.5);
   }
   .fr-pos-badge.gold { background: rgba(255,235,56,0.15); color: #ffeb38; }
   .fr-pos-badge.silver { background: rgba(245,230,200,0.15); color: rgba(245,230,200,0.8); }
-  .fr-pos-badge.bronze { background: rgba(205,127,50,0.15); color: #cd7f32; }
+  .fr-pos-badge.bronze { background: rgba(255, 141, 27, 0.15); color: #22211f; }
   .fr-tr-gold td { background: rgba(255,235,56,0.04); }
   .fr-tr-silver td { background: rgba(245,230,200,0.03); }
   .fr-tr-bronze td { background: rgba(205,127,50,0.03); }
@@ -430,12 +430,12 @@
   .wa-cta-big { display: inline-flex; align-items: center; gap: 0.8rem; background: #25D366; color: #fff; padding: 1.1rem 3rem; font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; transition: all 0.2s; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); margin-bottom: 1rem; }
   .wa-cta-big:hover { opacity: 0.88; transform: translateY(-3px); }
 
-  .hashtag-banner { background: var(--granate); padding: 3rem; text-align: center; }
-  .hashtag-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); color: var(--crema); letter-spacing: 4px; }
-  .hashtag-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,230,200,0.48); margin-top: 0.5rem; }
+  .hashtag-banner { background: var(--crema); padding: 3rem; text-align: center; }
+  .hashtag-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); color: var(--granate); letter-spacing: 2px; }
+  .hashtag-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(17, 17, 17, 0.48); margin-top: 0.5rem; }
 
-  footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgba(245,230,200,0.06); }
-  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--gold); opacity: 0.28; margin-bottom: 0.4rem; }
+  footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgb(245, 230, 200); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--granate); opacity: 0.28; margin-bottom: 0.4rem; }
   .footer-ig { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 3px; color: rgb(0,0,0); text-transform: uppercase; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -452,11 +452,14 @@
 <nav>
   <div class="nav-logo"><li><a href="#TOP">LIGA PSM TEAMS</a></li></div>
   <ul class="nav-links">
-    <li><a href="#liga">Liga</a></li>
+    <li><a href="#precio">Precio</a></li>
+    <li><a href="#inscripcion">Inscripción</a></li>
+    <li><a href="#Calendario">Calendario</a></li>
     <li><a href="#equipos">Equipos</a></li>
     <li><a href="#normativa">Normativa</a></li>
+    <li><a href="#FaseRegular">Fase Regular</a></li>
     <li><a href="#retos">Retos</a></li>
-    <li><a href="#inscripcion">Inscripción</a></li>
+
   </ul>
   <a href="https://wa.me/34747494352?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20Liga%20PSM%20Teams%202026" target="_blank" class="nav-wa">Inscríbete</a>
 </nav>
@@ -487,16 +490,66 @@
     <div class="stat-item"><span class="stat-num">6.5€</span><span class="stat-label">Por partido</span></div>
   </div>
 </div>
+<!-- PRECIOS -->
+<section id="precio">
+  <div class="section-label">Económico</div>
+  <h2 class="section-title">Precio<br>por <em>Jugador</em></h2>
+  <div class="precio-hero">
+    <span class="precio-amount">25€</span>
+    <div class="precio-unit">Inscripción Total — Liga Regular + Playoffs</div>
+    <p style="font-size:0.83rem;color:rgba(24,23,23,0.4);max-width:400px;margin:0 auto;">Abono único antes del inicio de la liga. No se permite participación con pagos pendientes.</p>
+    <div class="precio-includes">
+      <span class="include-item">Camiseta personalizada</span>
+      <span class="include-item">Liga Regular completa</span>
+      <span class="include-item">Playoffs incluidos</span>
+    </div>
+  </div>
+  <div style="background:rgb(0,66,128);border:1px solid rgba(0,0,0,0.45);padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div class="section-label2" style="margin-bottom:0.3rem">Por enfrentamiento</div>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--crema);line-height:1;">6.5€</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:2px;color:rgba(255,255,255,0.51);display:block;text-transform:uppercase;">por jugador/a · bolas nuevas incluidas</span>
+    </div>
+    <div style="flex:1;min-width:200px;">
+      <p style="font-size:0.87rem;color:rgba(245,230,200,0.52);line-height:1.6;">El importe total de la competición debe abonarse antes del inicio. Cada equipo entrega su <strong style="color:var(--crema)">escudo y colores</strong> para la camiseta personalizada.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PATROCINADORES -->
+<div class="sponsor-strip">
+  <span class="sponsor-label">Patrocinadores</span>
+  <div class="sponsor-marquee">
+    <div class="sponsor-track">
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+    </div>
+  </div>
+</div>
 
 <!-- LIGA REGULAR -->
-<section id="liga">
+<section id="Calendario">
   <div class="section-label">Temporada 2026</div>
   <h2 class="section-title">Calendario<br>& <em>Fechas</em></h2>
   <div class="calendar-card">
     <div class="cal-date">4 ABR al 28 JUN<span class="cal-month"></span></div>
     <div class="cal-divider"></div>
     <div class="cal-info"><h3>Fase Regular</h3><p>13 fines de semana · Sábados y domingos · Mínimo 4 partidos para clasificarse a playoffs</p></div>
-    <div class="cal-badge"><a href="#normativa">Liga Regular</a></div>
+    <div class="cal-badge"><a href="#FaseRegular">Liga Regular</a></div>
   </div>
   <div class="calendar-card">
     <div class="cal-date">4 Abr Al 13 sep<span class="cal-month"></span></div>
@@ -527,13 +580,56 @@
   <span class="sponsor-label">Patrocinadores</span>
   <div class="sponsor-marquee">
     <div class="sponsor-track">
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+    </div>
+  </div>
+</div>
+
+<!-- NORMATIVA -->
+<section id="normativa">
+  <div class="section-label">Reglamento</div>
+  <h2 class="section-title">Normativa<br><em>Oficial</em></h2>
+  <div class="norma-grid">
+    <div class="norma-block"><h3>Enfrentamientos</h3><ul><li><strong>2 partidos</strong> por enfrentamiento (2 pistas)</li><li>Mínimo <strong>4 jugadores/as</strong> por equipo</li><li>Al mejor de <strong>3 sets</strong> con punto de oro</li><li>Máximo <strong>6 puntos</strong> por enfrentamiento</li></ul></div>
+    <div class="norma-block"><h3>Puntuación</h3><ul><li>Partido ganado → <strong>3 puntos</strong></li><li>Partido perdido → <strong>1 punto</strong></li><li>Incomparecencia → <strong>0 puntos</strong></li><li><strong>+1 punto extra</strong> por foto con más camisetas</li></ul></div>
+    <div class="norma-block"><h3>Clasificación</h3><ul><li>Por suma total de puntos</li><li>Empate → Resultado directo</li><li>Empate → Diferencia de partidos</li><li>Empate → Diferencia de sets</li></ul></div>
+    <div class="norma-block"><h3>Gestión</h3><ul><li>Cancelaciones con <strong>72h mínimo</strong></li><li>Alineaciones confirmadas <strong>15 min antes</strong></li><li>Resultado a confirmar en <strong>máximo 12h</strong></li><li>Cuenta <strong>Playtomic</strong> activa obligatoria</li></ul></div>
+    <div class="norma-block"><h3>Fichajes y Altas</h3><ul><li>Sin altas con <strong>menos de 72h</strong> antes del partido</li><li>Registro completo obligatorio</li><li>Cuota de incorporación: <strong>25€</strong></li></ul></div>
+    <div class="norma-block"><h3>Camiseta y Punto Extra</h3><ul><li>Camiseta oficial incluida en la inscripción</li><li>Foto obligatoria con las 4 parejas en pista</li><li>Cada equipo entrega <strong>escudo y colores</strong></li><li>Más camisetas en foto → <strong>+1 punto</strong></li></ul></div>
+  </div>
+</section>
+
+<!-- PATROCINADORES -->
+<div class="sponsor-strip">
+  <span class="sponsor-label">Patrocinadores</span>
+  <div class="sponsor-marquee">
+    <div class="sponsor-track">
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
@@ -545,8 +641,8 @@
 <section id="equipos">
 <div class="section-label">Participantes</div>
 <div class="equipos-header">
-  <h2 class="section-title">Equipos<br>& <em>Jugadores</em></h2>
-  <a href="" class="clasificacion-btn">Clasificación y partidos</a>
+  <h2 class="section-title">Equipos<br>& <em>Jugadores</em> APuntados</h2>
+  <a href="" class="clasificacion-btn">VER EN XPORTY</a>
 </div>
 <div class="equipos-tabs">
   <button class="tab-btn active" onclick="showTab('future',this)">Future</button>
@@ -762,74 +858,10 @@
   </div>
 </section>
 
-<!-- PATROCINADORES -->
-<div class="sponsor-strip">
-  <span class="sponsor-label">Patrocinadores</span>
-  <div class="sponsor-marquee">
-    <div class="sponsor-track">
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-    </div>
-  </div>
-</div>
-
-<!-- NORMATIVA -->
-<section id="normativa">
-  <div class="section-label">Reglamento</div>
-  <h2 class="section-title">Normativa<br><em>Oficial</em></h2>
-  <div class="norma-grid">
-    <div class="norma-block"><h3>Enfrentamientos</h3><ul><li><strong>2 partidos</strong> por enfrentamiento (2 pistas)</li><li>Mínimo <strong>4 jugadores/as</strong> por equipo</li><li>Al mejor de <strong>3 sets</strong> con punto de oro</li><li>Máximo <strong>6 puntos</strong> por enfrentamiento</li></ul></div>
-    <div class="norma-block"><h3>Puntuación</h3><ul><li>Partido ganado → <strong>3 puntos</strong></li><li>Partido perdido → <strong>1 punto</strong></li><li>Incomparecencia → <strong>0 puntos</strong></li><li><strong>+1 punto extra</strong> por foto con más camisetas</li></ul></div>
-    <div class="norma-block"><h3>Clasificación</h3><ul><li>Por suma total de puntos</li><li>Empate → Resultado directo</li><li>Empate → Diferencia de partidos</li><li>Empate → Diferencia de sets</li></ul></div>
-    <div class="norma-block"><h3>Gestión</h3><ul><li>Cancelaciones con <strong>72h mínimo</strong></li><li>Alineaciones confirmadas <strong>15 min antes</strong></li><li>Resultado a confirmar en <strong>máximo 12h</strong></li><li>Cuenta <strong>Playtomic</strong> activa obligatoria</li></ul></div>
-    <div class="norma-block"><h3>Fichajes y Altas</h3><ul><li>Sin altas con <strong>menos de 72h</strong> antes del partido</li><li>Registro completo obligatorio</li><li>Cuota de incorporación: <strong>25€</strong></li></ul></div>
-    <div class="norma-block"><h3>Camiseta y Punto Extra</h3><ul><li>Camiseta oficial incluida en la inscripción</li><li>Foto obligatoria con las 4 parejas en pista</li><li>Cada equipo entrega <strong>escudo y colores</strong></li><li>Más camisetas en foto → <strong>+1 punto</strong></li></ul></div>
-  </div>
-</section>
-
-<!-- PATROCINADORES -->
-<div class="sponsor-strip">
-  <span class="sponsor-label">Patrocinadores</span>
-  <div class="sponsor-marquee">
-    <div class="sponsor-track">
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-    </div>
-  </div>
-</div>
-
-<!-- PUNTUACIÓN -->
-<section>
-  <div class="section-label">Cómo se puntúa</div>
-  <h2 class="section-title">Sistema de<br><em>Puntuación</em></h2>
-  <div class="puntos-big">
-    <div class="punto-item"><span class="punto-valor">+3 pt</span><span class="punto-desc">Partido Ganado</span></div>
-    <div class="punto-item"><span class="punto-valor">+1 pt</span><span class="punto-desc">Partido Perdido</span></div>
-    <div class="punto-item"><span class="punto-valor">0</span><span class="punto-desc">Incomparecencia</span></div>
-  </div>
-  <p style="text-align:center;font-size:0.8rem;color:rgba(49,47,42,0.71);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">Máximo <strong style="color:var(--gold)">6 puntos</strong> por enfrentamiento &nbsp;·&nbsp; <strong style="color:var(--gold)">+1 punto extra</strong> por foto con camiseta oficial</p>
-</section>
-
 <!-- =====================================================
      FASE REGULAR — nueva sección
      ===================================================== -->
-<div class="fase-regular-wrap" id="fase-regular">
+<div class="fase-regular-wrap" id="FaseRegular">
   <div class="fase-inner">
 
     <div class="section-label2" style="margin-bottom:0.8rem">Temporada 2026</div>
@@ -963,7 +995,28 @@
   </div>
 </div>
 <!-- fin fase regular -->
-
+<section id="horarios">
+  <div class="section-label">Cuándo jugamos</div>
+  <h2 class="section-title">Horarios<br>de <em>Juego</em> FASE REGULAR</h2>
+  <div class="horarios-grid">
+    <div class="horario-card">
+      <h3>Sábados</h3>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">20:00 h</span></div>
+    </div>
+    <div class="horario-card">
+      <h3>Domingos</h3>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
+      <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
+    </div>
+    <div></div>
+  </div>
+</section>
 <!-- RETOS -->
 <div class="retos-wrap" id="retos">
   <div class="retos-inner">
@@ -1020,27 +1073,9 @@
 </div>
 
 <!-- HORARIOS -->
-<section id="horarios">
-  <div class="section-label">Cuándo jugamos</div>
-  <h2 class="section-title">Horarios<br>de <em>Juego</em> FASE REGULAR</h2>
-  <div class="horarios-grid">
-    <div class="horario-card">
-      <h3>Sábados</h3>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">20:00 h</span></div>
-    </div>
-    <div class="horario-card">
-      <h3>Domingos</h3>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
-    </div>
-    <div></div>
-  </div>
+
+  <section>
+   <div class="section-label">Cuándo jugamos</div>
   <h2 class="section-title" style="margin-top:3rem;">Horarios<br>de <em>Juego</em> retos</h2>
   <div class="horario-card">
     <h3>Todos los días</h3>
@@ -1054,13 +1089,18 @@
   <span class="sponsor-label">Patrocinadores</span>
   <div class="sponsor-marquee">
     <div class="sponsor-track">
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
       <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
       <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
@@ -1068,35 +1108,11 @@
   </div>
 </div>
 
-<!-- PRECIOS -->
-<section id="precios">
-  <div class="section-label">Económico</div>
-  <h2 class="section-title">Precio<br>por <em>Jugador</em></h2>
-  <div class="precio-hero">
-    <span class="precio-amount">25€</span>
-    <div class="precio-unit">Inscripción Total — Liga Regular + Playoffs</div>
-    <p style="font-size:0.83rem;color:rgba(24,23,23,0.4);max-width:400px;margin:0 auto;">Abono único antes del inicio de la liga. No se permite participación con pagos pendientes.</p>
-    <div class="precio-includes">
-      <span class="include-item">Camiseta personalizada</span>
-      <span class="include-item">Liga Regular completa</span>
-      <span class="include-item">Playoffs incluidos</span>
-    </div>
-  </div>
-  <div style="background:rgb(0,66,128);border:1px solid rgba(0,0,0,0.45);padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div class="section-label2" style="margin-bottom:0.3rem">Por enfrentamiento</div>
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--crema);line-height:1;">6.5€</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:2px;color:rgba(255,255,255,0.51);display:block;text-transform:uppercase;">por jugador/a · bolas nuevas incluidas</span>
-    </div>
-    <div style="flex:1;min-width:200px;">
-      <p style="font-size:0.87rem;color:rgba(245,230,200,0.52);line-height:1.6;">El importe total de la competición debe abonarse antes del inicio. Cada equipo entrega su <strong style="color:var(--crema)">escudo y colores</strong> para la camiseta personalizada.</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- HASHTAG -->
 <div class="hashtag-banner">
-  <div class="hashtag-text">#RetoPSMteams</div>
+  <div class="hashtag-text">#LIGAPSMteams</div>
   <div class="hashtag-sub">Comparte · Etiqueta · Suma para tu equipo</div>
 </div>
 

@@ -11,11 +11,36 @@
     --granate-dark: #6B1222;
     --granate-light: #A82040;
     --crema: #F5E6C8;
+    --crema-dark: #EDD9A8;
     --gold: #000000;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: #F5E6C8; color: #000000; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+}
+
+/* icono hamburguesa */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.menu-toggle span{
+  width:25px;
+  height:3px;
+  background:var(--crema);
+  display:block;
+}
+
+
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -30,6 +55,46 @@
   .nav-links a:hover { color: var(--crema); }
   .nav-wa { background: #36b163; color: #fff; padding: 0.55rem 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s; }
   .nav-wa:hover { opacity: 0.85; }
+
+@media (max-width: 768px){
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  /* logo centrado */
+  .nav-logo{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  /* ocultamos el menu y lo convertimos en dropdown */
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#111;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+    gap:1rem;
+    display:none;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  /* ocultamos el botón whatsapp en móvil */
+  .nav-wa{
+    display:none;
+  }
+}
+
+
+
 
   .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 6rem 2rem 5rem; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(119,63,63,0) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 20%, rgba(139,26,46,0.2) 0%, transparent 60%); }
@@ -54,30 +119,45 @@
   .stat-item:last-child { border-right: none; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--crema); display: block; line-height: 1; }
   .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.6); }
-  .stat-label2 { width: 100%; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.6); margin-bottom: 0.1rem; }
-  .stat-item2 { flex: 0 1 140px; display: flex; justify-content: center; align-items: center; min-height: 80px; }
-  .stat-item2 img { width: auto; height: auto; max-width: 100%; object-fit: contain; }
-  .logo-xl img { max-height: 200px; } .logo-lg img { max-height: 150px; } .logo-md img { max-height: 120px; } .logo-sm img { max-height: 90px; }
 
-  .sponsor-strip{background:var(--granate);padding:1.5rem 0;overflow:hidden;text-align:left; padding:1.5rem 2rem; /* arriba/abajo 1.5rem, izquierda/derecha 2rem */}
-  .sponsor-label{width: 90%;:block;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,230,200,0.6);margin-bottom:1rem;}
-  .sponsor-marquee{width:100%;overflow:hidden;position:relative;}
-  .sponsor-track{display:flex;align-items:center;gap:4rem;width:max-content;animation:sponsor-scroll 25s linear infinite;}
-  .sponsor-item{flex:0 0 auto;display:flex;align-items:center;justify-content:center;min-height:80px;}
-  .sponsor-item img{max-width:100%;height:auto;object-fit:contain;}
-  .sponsor-xl img{max-height:60px;} .sponsor-lg img{max-height:80px;} .sponsor-md img{max-height:100px;} .sponsor-sm img{max-height:70px;}
-  @keyframes sponsor-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-  .sponsor-track:hover{animation-play-state:paused;}
+  /* ============================================================
+     SPONSOR STRIP
+     ============================================================ */
+  .sponsor-strip { background: var(--granate); padding: 1.8rem 2rem; }
+  .sponsor-label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,230,200,0.45); margin-bottom: 1.2rem; }
+  .sponsor-row { display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+  .sponsor-item-static { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .sponsor-item-static img { width: auto; object-fit: contain; filter: brightness(1); transition: opacity 0.2s; }
+  .sponsor-item-static:hover img { opacity: 0.8; }
+  .sp-1 img { height: 150px; }
+  .sp-2 img { height: 55px; }
+  .sp-3 img { height: 60px; }
+  .sp-4 img { height: 30px; }
+  .sponsor-sep { width: 1px; height: 40px; background: rgba(245,230,200,0.15); flex-shrink: 0; }
+  .colaboradores-row { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.4rem; padding-top: 1.2rem; }
+  .colaborador-label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,230,200,0.3); margin-bottom: 0.9rem; }
+  .colab-item { display: flex; align-items: center; justify-content: center; flex-shrink: 0; opacity: 0.7; transition: opacity 0.2s; }
+  .colab-item:hover { opacity: 1; }
+  .colab-item img { height: 28px; width: auto; object-fit: contain; }
+  @media (max-width: 600px) {
+    .sp-1 img { height: 60px; } .sp-2 img { height: 20px; } .sp-3 img { height: 20px; }
+    .sponsor-row { gap: 1.5rem; } .sponsor-sep { display: none; } .colab-item img { height: 10px; }
+  }
 
   section { padding: 7rem 2rem; max-width: 1200px; margin: 0 auto; }
   .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem; }
   .section-label2 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--crema); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem; }
+  /* versión oscura para fondos crema */
+  .section-label-dark { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--granate); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem; }
   .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
   .section-label2::before { content: ''; width: 28px; height: 1px; background: var(--crema); }
+  .section-label-dark::before { content: ''; width: 28px; height: 1px; background: var(--granate); }
   .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.92; color: var(--gold); margin-bottom: 3rem; }
   .section-title em { font-style: normal; color: var(--granate-light); }
   .section-title2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.92; color: var(--crema); margin-bottom: 3rem; }
-  .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(0,0,0,0.699), transparent); }
+  /* título para fondo crema */
+  .section-title-dark { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.92; color: var(--granate-dark); margin-bottom: 3rem; }
+  .section-title-dark em { font-style: normal; color: var(--granate-light); }
 
   .calendar-card { background: rgba(139,26,46,0.1); border: 1px solid rgba(139,26,46,0.28); border-left: 3px solid var(--granate); padding: 1.8rem 2.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 2rem; transition: all 0.2s; flex-wrap: wrap; }
   .calendar-card:hover { background: rgba(139,26,46,0.18); border-left-color: var(--granate-light); transform: translateX(4px); }
@@ -107,7 +187,6 @@
   .clasificacion-btn { font-family: 'Barlow Condensed', sans-serif; letter-spacing: 2px; font-size: 0.75rem; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid rgba(245,230,200,0.4); background: #ff9100; color: var(--granate); transition: all 0.25s ease; margin-bottom: 20px; }
   .clasificacion-btn:hover { background: rgb(0, 139, 0); color: var(--crema); }
   .equipos-header { margin-bottom: 20px; }
-  @media (max-width: 700px) { .equipos-header { flex-direction: column; align-items: flex-start; margin-bottom: 20px; } .clasificacion-btn { margin-top: 0.5rem; } }
 
   .equipos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
   .equipo-card { background: rgb(139,26,47); border: 1px solid rgba(245,230,200,0.07); padding: 1.8rem; transition: all 0.2s; position: relative; overflow: hidden; }
@@ -129,20 +208,22 @@
   .slot-libre:hover { transform: none !important; background: rgba(120,247,115,0.55) !important; }
 
   /* ============================================================
-     FASE REGULAR — nueva sección
+     FASE REGULAR — FONDO CREMA
      ============================================================ */
   .fase-regular-wrap {
-    background: var(--granate-dark);
+    background: var(--crema);
     padding: 7rem 2rem;
     position: relative;
     overflow: hidden;
+    border-top: 4px solid var(--granate);
+    border-bottom: 4px solid var(--granate);
   }
   .fase-regular-wrap::before {
     content: 'LIGA';
     position: absolute;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 22vw;
-    color: rgba(245,230,200,0.03);
+    color: rgba(139,26,46,0.05);
     top: 50%; left: -2%;
     transform: translateY(-50%);
     pointer-events: none;
@@ -150,236 +231,270 @@
   }
   .fase-inner { max-width: 1200px; margin: 0 auto; position: relative; }
 
-  /* Steps */
-  .fr-steps {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-  .fr-step {
-    background: rgba(245,230,200,0.06);
-    border: 1px solid rgba(245,230,200,0.1);
-    padding: 1.8rem;
-    display: flex;
-    gap: 1.2rem;
-    align-items: flex-start;
-  }
-  .fr-step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: #e0d2b6a4;
-    line-height: 1;
-    flex-shrink: 0;
-    min-width: 42px;
-  }
-  .fr-step-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--crema);
-    margin-bottom: 0.4rem;
-    text-transform: uppercase;
-  }
-  .fr-step-desc {
-    font-size: 0.85rem;
-    color: rgba(245,230,200,0.65);
-    font-weight: 300;
-    line-height: 1.5;
-  }
+  /* Steps — versión crema */
+  .fr-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 3rem; }
+  .fr-step { background: rgba(139,26,46,0.06); border: 1px solid rgba(139,26,46,0.18); border-left: 3px solid var(--granate); padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .fr-step-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(139,26,46,0.25); line-height: 1; flex-shrink: 0; min-width: 42px; }
+  .fr-step-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; color: var(--granate-dark); margin-bottom: 0.4rem; text-transform: uppercase; }
+  .fr-step-desc { font-size: 0.85rem; color: rgba(0,0,0,0.6); font-weight: 300; line-height: 1.5; }
 
-  /* Tabla simulación */
-  .fr-tabla-wrap {
-    background: #f5e6c88e;
-    border: 1px solid rgba(245,230,200,0.1);
+  /* ============================================================
+     CLASIFICACIÓN — TABS POR CATEGORÍA (fondo crema)
+     ============================================================ */
+  .clas-wrap {
+    background: #fff;
+    border: 1px solid rgba(139,26,46,0.15);
     overflow: hidden;
     margin-bottom: 1rem;
   }
-  .fr-tabla-header {
-    padding: 1rem 1.5rem;
-    background: #F5E6C8;
+  .clas-header {
+    padding: 1.2rem 1.5rem;
+    background: var(--granate);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.8rem;
   }
-  .fr-tabla-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 700;
+  .clas-header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--crema);
     letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
   }
-  .fr-tabla-cat-badge {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(245,230,200,0.45);
-    background: rgba(245,230,200,0.08);
-    padding: 0.2rem 0.6rem;
-  }
-  .fr-tabla-scroll { overflow-x: auto; }
-  .fr-tabla {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 420px;
-  }
-  .fr-tabla thead tr {
-    background: #f5e6c86e;
-  }
-  .fr-tabla th {
+  .clas-update-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(245,230,200,0.15);
+    border: 1px solid rgba(245,230,200,0.25);
+    padding: 0.3rem 0.8rem;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(48, 47, 45, 0.45);
-    padding: 0.7rem 1rem;
-    text-align: center;
-    border-bottom: 1px solid rgba(245,230,200,0.08);
+    color: rgba(245,230,200,0.7);
   }
-  .fr-th-pos { width: 40px; }
-  .fr-th-equipo { text-align: left; }
-  .fr-tabla td {
-    padding: 0.8rem 1rem;
+  .clas-update-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4caf50;
+    display: inline-block;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+  @keyframes pulse-green { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  /* Tabs de categoría dentro de clasificación */
+  .clas-tabs {
+    display: flex;
+    border-bottom: 2px solid rgba(139,26,46,0.12);
+    background: rgba(245,230,200,0.5);
+    flex-wrap: wrap;
+  }
+  .clas-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.2rem;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.88rem;
-    color: rgba(24, 23, 22, 0.75);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.4);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.18s;
+  }
+  .clas-tab-btn.active { color: var(--granate); border-bottom-color: var(--granate); background: rgba(139,26,46,0.05); }
+  .clas-tab-btn:hover:not(.active) { color: rgba(139,26,46,0.6); }
+  .clas-panel { display: none; }
+  .clas-panel.active { display: block; }
+
+  /* Tabla de clasificación */
+  .clas-tabla-scroll { overflow-x: auto; }
+  .clas-tabla { width: 100%; border-collapse: collapse; min-width: 480px; }
+  .clas-tabla thead tr { background: rgba(139,26,46,0.06); }
+  .clas-tabla th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.4);
+    padding: 0.8rem 1rem;
     text-align: center;
-    border-bottom: 1px solid rgba(44, 43, 41, 0.05);
+    border-bottom: 2px solid rgba(139,26,46,0.12);
   }
-  .fr-tabla tbody tr:last-child td { border-bottom: none; }
-  .fr-tabla tbody tr:hover { background: rgba(53, 52, 50, 0.04); }
-  .fr-td-pos { width: 50px; }
-  .fr-td-equipo { text-align: left; display: flex; align-items: center; gap: 0.6rem; }
-  .fr-equipo-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .fr-pts {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem;
-    color: var(--crema);
-    font-weight: normal;
-  }
-  .fr-pos-badge {
-    display: inline-flex;
-    width: 24px; height: 24px;
-    border-radius: 3px;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
+  .clas-th-equipo { text-align: left !important; }
+  .clas-tabla td {
+    padding: 0.85rem 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.9rem;
-    background: rgba(56, 55, 53, 0.1);
-    color: rgba(46, 45, 43, 0.5);
+    color: rgba(0,0,0,0.7);
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
   }
-  .fr-pos-badge.gold { background: rgba(255,235,56,0.15); color: #ffeb38; }
-  .fr-pos-badge.silver { background: rgba(245,230,200,0.15); color: rgba(245,230,200,0.8); }
-  .fr-pos-badge.bronze { background: rgba(255, 141, 27, 0.15); color: #22211f; }
-  .fr-tr-gold td { background: rgba(255,235,56,0.04); }
-  .fr-tr-silver td { background: rgba(245,230,200,0.03); }
-  .fr-tr-bronze td { background: rgba(205,127,50,0.03); }
-  .fr-tabla-nota {
+  .clas-tabla tbody tr:last-child td { border-bottom: none; }
+  .clas-tabla tbody tr:hover { background: rgba(139,26,46,0.03); }
+  .clas-td-equipo { text-align: left !important; display: flex !important; align-items: center; gap: 0.7rem; }
+  .clas-equipo-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .clas-pts { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--granate); font-weight: normal; }
+  .clas-pos-badge {
+    display: inline-flex; width: 26px; height: 26px; border-radius: 3px;
+    align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem;
+    background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.4);
+  }
+  .clas-pos-badge.gold { background: rgba(255,215,0,0.2); color: #8a6800; }
+  .clas-pos-badge.silver { background: rgba(180,180,180,0.25); color: #555; }
+  .clas-pos-badge.bronze { background: rgba(205,127,50,0.2); color: #7a4a00; }
+  .clas-tr-gold td { background: rgba(255,215,0,0.04); }
+  .clas-tr-silver td { background: rgba(180,180,180,0.04); }
+  .clas-tr-bronze td { background: rgba(205,127,50,0.04); }
+
+  /* Mensaje "sin datos aún" */
+  .clas-empty {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .clas-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; opacity: 0.4; }
+  .clas-empty-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--granate-dark);
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+    letter-spacing: 2px;
+  }
+  .clas-empty-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: rgba(0,0,0,0.35);
+  }
+  .clas-nota {
     padding: 0.7rem 1.5rem;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.68rem;
-    color: rgba(245,230,200,0.25);
+    color: rgba(0,0,0,0.3);
     letter-spacing: 1px;
-    border-top: 1px solid rgba(245,230,200,0.05);
+    border-top: 1px solid rgba(139,26,46,0.08);
     font-style: italic;
+    background: rgba(245,230,200,0.3);
   }
 
-  /* Premios fase regular */
-  .fr-premios-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
+  /* Premios fase regular — versión crema */
+  .fr-premios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .fr-premio-card {
-    background: rgba(245,230,200,0.05);
-    border: 1px solid rgba(245,230,200,0.1);
+    background: rgba(139,26,46,0.05);
+    border: 1px solid rgba(139,26,46,0.15);
     padding: 2rem 1.5rem;
     text-align: center;
     transition: background 0.2s;
   }
-  .fr-premio-card:hover { background: rgba(245,230,200,0.09); }
+  .fr-premio-card:hover { background: rgba(139,26,46,0.1); }
   .fr-premio-tbd { border-style: dashed; }
   .fr-premio-pos { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
-  .fr-premio-cat {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(245,230,200,0.45);
-    margin-bottom: 0.6rem;
+  .fr-premio-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(0,0,0,0.4); margin-bottom: 0.6rem; }
+  .fr-premio-valor { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--granate); display: block; line-height: 1; margin-bottom: 0.6rem; opacity: 0.5; letter-spacing: 2px; }
+  .fr-premio-desc { font-size: 0.8rem; color: rgba(0,0,0,0.5); font-weight: 300; line-height: 1.5; }
+
+  @media (max-width: 768px) { .fr-steps { grid-template-columns: 1fr; } .fr-premios-grid { grid-template-columns: 1fr; } }
+
+  /* Horarios — versión crema */
+  .horarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .horario-card { background: rgba(139,26,46,0.04); border: 1px solid rgba(139,26,46,0.15); padding: 2.5rem; }
+  .horario-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--granate); margin-bottom: 1.5rem; letter-spacing: 2px; }
+  .time-slot { display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(139,26,46,0.08); }
+  .time-slot:last-child { border-bottom: none; }
+  .time-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--granate); flex-shrink: 0; }
+  .time-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--granate-dark); letter-spacing: 1px; }
+
+  /* ============================================================
+     RETOS — FONDO CREMA
+     ============================================================ */
+  .retos-wrap {
+    background: var(--crema-dark);
+    padding: 7rem 2rem;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid var(--granate);
+    border-bottom: 4px solid var(--granate);
   }
-  .fr-premio-valor {
+  .retos-wrap::before {
+    content: 'RETOS';
+    position: absolute;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--crema);
-    display: block;
+    font-size: 20vw;
+    color: rgba(139,26,46,0.05);
+    top: 50%; right: -2%;
+    transform: translateY(-50%);
+    pointer-events: none;
     line-height: 1;
-    margin-bottom: 0.6rem;
-    opacity: 0.4;
-    letter-spacing: 2px;
   }
-  .fr-premio-desc {
-    font-size: 0.8rem;
-    color: rgba(245,230,200,0.4);
-    font-weight: 300;
-    line-height: 1.5;
-  }
+  .retos-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+  .retos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .reto-card { background: rgba(255,255,255,0.5); border: 1px solid rgba(139,26,46,0.18); border-left: 3px solid var(--granate); padding: 2rem; }
+  .reto-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--granate-dark); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(139,26,46,0.15); }
+  .reto-card p, .reto-card li { font-size: 0.87rem; color: rgba(0,0,0,0.65); font-weight: 300; line-height: 1.6; }
+  .reto-card ul { list-style: none; padding: 0; }
+  .reto-card li { padding-left: 1rem; position: relative; margin-bottom: 0.4rem; }
+  .reto-card li::before { content: '›'; position: absolute; left: 0; color: var(--granate); font-weight: 700; }
+  .reto-card strong { color: var(--granate-dark); font-weight: 600; }
 
-  /* Responsive fase regular */
-  @media (max-width: 768px) {
-    .fr-steps { grid-template-columns: 1fr; }
-    .fr-premios-grid { grid-template-columns: 1fr; }
-  }
+  .prize-banner { background: var(--granate); border: none; padding: 2rem 2.5rem; margin-top: 2rem; display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+  .prize-item { text-align: center; }
+  .prize-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+  .prize-item h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--crema); margin-bottom: 0.3rem; }
+  .prize-item p { font-size: 0.82rem; color: rgba(245,230,200,0.7); }
 
-  /* ============================================================ */
-
+  /* Ranking retos — versión sobre crema */
   .ranking-wrap { margin-top: 4rem; }
-  .ranking-toggle { display: inline-flex; background: rgba(245,230,200,0.1); border: 1px solid rgba(245,230,200,0.2); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
-  .rtoggle-btn { background: transparent; border: none; padding: 0.55rem 1.4rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.45); cursor: pointer; transition: all 0.18s; }
-  .rtoggle-btn.active { background: var(--granate-light); color: var(--crema); }
-  .rtoggle-btn:hover:not(.active) { color: rgba(245,230,200,0.75); }
+  .ranking-toggle { display: inline-flex; background: rgba(139,26,46,0.08); border: 1px solid rgba(139,26,46,0.2); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+  .rtoggle-btn { background: transparent; border: none; padding: 0.55rem 1.4rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.4); cursor: pointer; transition: all 0.18s; }
+  .rtoggle-btn.active { background: var(--granate); color: var(--crema); }
+  .rtoggle-btn:hover:not(.active) { color: var(--granate); }
   .ranking-panel { display: none; }
   .ranking-panel.active { display: block; }
 
   .jugadores-list { display: flex; flex-direction: column; gap: 0.4rem; }
-  .jugador-row { display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.5rem; background: rgb(0,0,0); border: 1px solid rgba(245,230,200,0.06); transition: all 0.15s; }
-  .jugador-row:hover { background: rgba(29,18,20,0.97); border-color: rgba(139,26,46,0.2); }
-  .jugador-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: rgba(245,230,200,0.15); min-width: 30px; text-align: center; }
-  .jugador-row:nth-child(1) .jugador-pos { color: #ffeb38; }
-  .jugador-row:nth-child(2) .jugador-pos { color: rgba(245,230,200,0.5); }
-  .jugador-row:nth-child(3) .jugador-pos { color: #cd7f32; }
+  .jugador-row { display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.5rem; background: rgba(255,255,255,0.7); border: 1px solid rgba(139,26,46,0.1); transition: all 0.15s; }
+  .jugador-row:hover { background: rgba(255,255,255,0.95); border-color: rgba(139,26,46,0.25); }
+  .jugador-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: rgba(0,0,0,0.15); min-width: 30px; text-align: center; }
+  .jugador-row:nth-child(1) .jugador-pos { color: #8a6800; }
+  .jugador-row:nth-child(2) .jugador-pos { color: rgba(0,0,0,0.4); }
+  .jugador-row:nth-child(3) .jugador-pos { color: #7a4a00; }
   .jugador-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--granate); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; color: var(--crema); flex-shrink: 0; }
   .jugador-info { flex: 1; }
-  .jugador-nombre { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--crema); letter-spacing: 0.5px; }
-  .jugador-equipo-tag { font-size: 0.7rem; color: rgba(245,230,200,0.73); font-weight: 300; }
+  .jugador-nombre { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--granate-dark); letter-spacing: 0.5px; }
+  .jugador-equipo-tag { font-size: 0.7rem; color: rgba(0,0,0,0.5); font-weight: 300; }
   .jugador-pts { text-align: right; }
-  .jugador-pts-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--crema); display: block; line-height: 1; }
-  .jugador-pts-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 1px; color: rgba(245,230,200,0.62); text-transform: uppercase; }
+  .jugador-pts-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--granate); display: block; line-height: 1; }
+  .jugador-pts-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 1px; color: rgba(0,0,0,0.4); text-transform: uppercase; }
   .faded { opacity: 0.3; pointer-events: none; }
 
   .equipos-rank-list { display: flex; flex-direction: column; gap: 0.4rem; }
-  .equipo-rank-row { display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.5rem; background: rgb(0,0,0); border: 1px solid rgba(245,230,200,0.06); transition: all 0.15s; }
-  .equipo-rank-row:hover { background: rgba(29,18,20,0.97); border-color: rgba(139,26,46,0.2); }
-  .equipo-rank-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: rgba(245,230,200,0.15); min-width: 30px; text-align: center; }
-  .equipo-rank-row:nth-child(1) .equipo-rank-pos { color: #ffeb38; }
-  .equipo-rank-row:nth-child(2) .equipo-rank-pos { color: rgba(245,230,200,0.5); }
-  .equipo-rank-row:nth-child(3) .equipo-rank-pos { color: #cd7f32; }
+  .equipo-rank-row { display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.5rem; background: rgba(255,255,255,0.7); border: 1px solid rgba(139,26,46,0.1); transition: all 0.15s; }
+  .equipo-rank-row:hover { background: rgba(255,255,255,0.95); border-color: rgba(139,26,46,0.25); }
+  .equipo-rank-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: rgba(0,0,0,0.15); min-width: 30px; text-align: center; }
+  .equipo-rank-row:nth-child(1) .equipo-rank-pos { color: #8a6800; }
+  .equipo-rank-row:nth-child(2) .equipo-rank-pos { color: rgba(0,0,0,0.4); }
+  .equipo-rank-row:nth-child(3) .equipo-rank-pos { color: #7a4a00; }
   .equipo-rank-badge { width: 38px; height: 38px; background: var(--granate); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 0.78rem; color: var(--crema); flex-shrink: 0; letter-spacing: 1px; }
   .equipo-rank-info { flex: 1; }
-  .equipo-rank-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--crema); letter-spacing: 0.5px; }
-  .equipo-rank-cat { font-size: 0.7rem; color: rgba(245,230,200,0.73); font-weight: 300; }
+  .equipo-rank-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--granate-dark); letter-spacing: 0.5px; }
+  .equipo-rank-cat { font-size: 0.7rem; color: rgba(0,0,0,0.5); font-weight: 300; }
   .equipo-rank-pts { text-align: right; }
-  .equipo-rank-pts-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--crema); display: block; line-height: 1; }
-  .equipo-rank-pts-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 1px; color: rgba(245,230,200,0.62); text-transform: uppercase; }
+  .equipo-rank-pts-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--granate); display: block; line-height: 1; }
+  .equipo-rank-pts-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 1px; color: rgba(0,0,0,0.4); text-transform: uppercase; }
 
+  /* Horario retos — versión crema */
+  .horario-card-retos { background: rgba(255,255,255,0.5); border: 1px solid rgba(139,26,46,0.15); padding: 2.5rem; }
+  .horario-card-retos h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--granate); margin-bottom: 1.5rem; letter-spacing: 2px; }
+
+  /* ============================================================ */
   .norma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .norma-block { background: rgba(245,230,200,0.02); border: 1px solid rgba(245,230,200,0.07); padding: 1.8rem; }
   .norma-block h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--granate-light); margin-bottom: 0.9rem; padding-bottom: 0.7rem; border-bottom: 1px solid rgba(139,26,46,0.25); }
@@ -388,36 +503,6 @@
   .norma-block li::before { content: '—'; position: absolute; left: 0; color: var(--granate-light); }
   .norma-block strong { color: var(--gold); font-weight: 600; }
 
-  .retos-wrap { background: var(--granate-dark); padding: 7rem 2rem; position: relative; overflow: hidden; }
-  .retos-wrap::before { content: 'RETOS'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 20vw; color: rgba(245,230,200,0.03); top: 50%; right: -2%; transform: translateY(-50%); pointer-events: none; line-height: 1; }
-  .retos-inner { max-width: 1200px; margin: 0 auto; position: relative; }
-  .retos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
-  .reto-card { background: rgba(245,230,200,0.06); border: 1px solid rgba(245,230,200,0.1); padding: 2rem; }
-  .reto-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--crema); margin-bottom: 1rem; }
-  .reto-card p, .reto-card li { font-size: 0.87rem; color: rgba(245,230,200,0.7); font-weight: 300; line-height: 1.6; }
-  .reto-card ul { list-style: none; padding: 0; }
-  .reto-card li { padding-left: 1rem; position: relative; margin-bottom: 0.4rem; }
-  .reto-card li::before { content: '›'; position: absolute; left: 0; color: var(--crema); font-weight: 700; }
-  .reto-card strong { color: var(--crema); }
-  .prize-banner { background: rgba(201,168,76,0.73); border: 1px solid rgba(201,168,76,0.22); padding: 2rem 2.5rem; margin-top: 2rem; display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
-  .prize-item { text-align: center; }
-  .prize-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-  .prize-item h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--crema); margin-bottom: 0.3rem; }
-  .prize-item p { font-size: 0.82rem; color: rgba(245,230,200,0.58); }
-
-  .puntos-big { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(245,230,200,0.06); margin-bottom: 2rem; }
-  .punto-item { background: #0f0508; padding: 3rem 2rem; text-align: center; }
-  .punto-valor { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: var(--granate-light); display: block; line-height: 1; margin-bottom: 0.5rem; }
-  .punto-desc { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.48); }
-
-  .horarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .horario-card { background: rgba(245,230,200,0.02); border: 1px solid rgba(14,13,12,0.21); padding: 2.5rem; }
-  .horario-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--granate-light); margin-bottom: 1.5rem; letter-spacing: 2px; }
-  .time-slot { display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-  .time-slot:last-child { border-bottom: none; }
-  .time-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--granate); flex-shrink: 0; }
-  .time-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--gold); letter-spacing: 1px; }
-
   .precio-hero { text-align: center; padding: 4.5rem 2rem; background: linear-gradient(135deg, rgba(139,26,47,0.43) 0%, rgba(139,26,46,0.04) 100%); border: 1px solid rgba(139,26,46,0.2); margin-bottom: 1.5rem; }
   .precio-amount { font-family: 'Bebas Neue', sans-serif; font-size: 7rem; color: var(--granate); line-height: 1; display: block; }
   .precio-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(29,29,28,0.57); margin-bottom: 1.5rem; }
@@ -425,32 +510,61 @@
   .include-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.4rem; }
   .include-item::before { content: '✓'; }
 
+  /* ============================================================
+     SECCIONES BLOQUEADAS
+     ============================================================ */
+  .locked-wrap { position: relative; padding: 7rem 2rem; overflow: hidden; }
+  .locked-wrap.nocturno-bg { background: #0a0812; }
+  .locked-wrap.playoffs-bg { background: #060a0f; }
+  .locked-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+  .locked-wrap.nocturno-bg::before { content: 'Julio'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 22vw; color: rgba(245,230,200,0.025); top: 50%; right: -2%; transform: translateY(-50%); pointer-events: none; line-height: 1; }
+  .locked-wrap.playoffs-bg::before { content: 'PLAYOFFS'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 14vw; color: rgba(245,230,200,0.025); top: 50%; right:-1%; transform: translateY(-50%); pointer-events: none; line-height: 1; text-align: left; }
+  .locked-overlay { position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(0,0,0,0.08) 12px, rgba(0,0,0,0.08) 14px); pointer-events: none; z-index: 1; }
+  .locked-content { position: relative; z-index: 2; }
+  .lock-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(0,0,0,0.6); border: 1px solid rgba(245,230,200,0.15); padding: 0.5rem 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,230,200,0.5); margin-bottom: 2rem; }
+  .locked-preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 2.5rem; opacity: 0.35; filter: blur(3px); pointer-events: none; user-select: none; }
+  .locked-preview-card { background: rgba(245,230,200,0.05); border: 1px solid rgba(245,230,200,0.1); padding: 2rem; min-height: 120px; }
+  .locked-preview-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,200,0.6); margin-bottom: 0.6rem; }
+  .locked-preview-bar { height: 8px; background: rgba(245,230,200,0.08); border-radius: 2px; margin: 0.4rem 0; }
+  .locked-preview-bar.w60 { width: 60%; } .locked-preview-bar.w80 { width: 80%; } .locked-preview-bar.w40 { width: 40%; } .locked-preview-bar.w70 { width: 70%; }
+  .locked-cta-box { text-align: center; margin-top: 3rem; padding: 2.5rem; border: 1px dashed rgba(245,230,200,0.15); background: rgba(245,230,200,0.03); position: relative; z-index: 2; }
+  .locked-cta-box p { font-size: 0.87rem; color: rgba(245,230,200,0.4); font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; margin-top: 0.8rem; }
+  .nocturno-stars { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+  .star { position: absolute; width: 2px; height: 2px; background: rgba(245,230,200,0.3); border-radius: 50%; }
+
+  /* ============================================================ */
   .inscripcion-wrap { background: #000000; padding: 7rem 2rem; text-align: center; }
   .inscripcion-inner { max-width: 680px; margin: 0 auto; }
   .wa-cta-big { display: inline-flex; align-items: center; gap: 0.8rem; background: #25D366; color: #fff; padding: 1.1rem 3rem; font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; transition: all 0.2s; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); margin-bottom: 1rem; }
   .wa-cta-big:hover { opacity: 0.88; transform: translateY(-3px); }
-
   .hashtag-banner { background: var(--crema); padding: 3rem; text-align: center; }
   .hashtag-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); color: var(--granate); letter-spacing: 2px; }
-  .hashtag-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(17, 17, 17, 0.48); margin-top: 0.5rem; }
-
-  footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgb(245, 230, 200); }
+  .hashtag-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(17,17,17,0.48); margin-top: 0.5rem; }
+  footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgb(245,230,200); }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--granate); opacity: 0.28; margin-bottom: 0.4rem; }
   .footer-ig { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 3px; color: rgb(0,0,0); text-transform: uppercase; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes scrollPulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.7; } }
+  @keyframes starTwinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.8; } }
 
   @media (max-width: 900px) { .cats-grid { grid-template-columns: repeat(3, 1fr); } .norma-grid { grid-template-columns: 1fr; } .retos-grid { grid-template-columns: 1fr; } .horarios-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } section { padding: 4rem 1.5rem; } .puntos-big { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } section { padding: 4rem 1.5rem; } }
   @media (max-width: 500px) { .cats-grid { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo"><li><a href="#TOP">LIGA PSM TEAMS</a></li></div>
+ <nav>
+  <div class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-logo">
+    <a href="#TOP">LIGA PSM TEAMS</a>
+  </div>
   <ul class="nav-links">
     <li><a href="#precio">Precio</a></li>
     <li><a href="#inscripcion">Inscripción</a></li>
@@ -459,8 +573,8 @@
     <li><a href="#normativa">Normativa</a></li>
     <li><a href="#FaseRegular">Fase Regular</a></li>
     <li><a href="#retos">Retos</a></li>
-
   </ul>
+
   <a href="https://wa.me/34747494352?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20la%20Liga%20PSM%20Teams%202026" target="_blank" class="nav-wa">Inscríbete</a>
 </nav>
 
@@ -490,6 +604,7 @@
     <div class="stat-item"><span class="stat-num">6.5€</span><span class="stat-label">Por partido</span></div>
   </div>
 </div>
+
 <!-- PRECIOS -->
 <section id="precio">
   <div class="section-label">Económico</div>
@@ -516,54 +631,60 @@
   </div>
 </section>
 
-
 <!-- PATROCINADORES -->
 <div class="sponsor-strip">
   <span class="sponsor-label">Patrocinadores</span>
-  <div class="sponsor-marquee">
-    <div class="sponsor-track">
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+  </div>
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
     </div>
   </div>
 </div>
 
-<!-- LIGA REGULAR -->
+<!-- CALENDARIO -->
 <section id="Calendario">
   <div class="section-label">Temporada 2026</div>
   <h2 class="section-title">Calendario<br>& <em>Fechas</em></h2>
   <div class="calendar-card">
-    <div class="cal-date">4 ABR al 28 JUN<span class="cal-month"></span></div>
+    <div class="cal-date">Fase Regular<span class="cal-month"></span></div>
     <div class="cal-divider"></div>
-    <div class="cal-info"><h3>Fase Regular</h3><p>13 fines de semana · Sábados y domingos · Mínimo 4 partidos para clasificarse a playoffs</p></div>
+    <div class="cal-info"><h3>11 ABR al 28 JUN</h3><p>13 fines de semana · Sábados y domingos · Mínimo 4 partidos para clasificarse a playoffs</p></div>
     <div class="cal-badge"><a href="#FaseRegular">Liga Regular</a></div>
   </div>
   <div class="calendar-card">
-    <div class="cal-date">4 Abr Al 13 sep<span class="cal-month"></span></div>
+    <div class="cal-date">Reto de Partidos PSM<span class="cal-month"></span></div>
     <div class="cal-divider"></div>
-    <div class="cal-info"><h3>Retos PSM</h3><p>Partidos amistosos competitivos entre rivales de la liga durante la semana. Suma puntos para ti y para tu equipo</p></div>
+    <div class="cal-info"><h3>11 Abr al 13 sep</h3><p>Partidos amistosos competitivos entre rivales de la liga. Suma puntos para ti y para tu equipo</p></div>
     <div class="cal-badge"><a href="#retos">Retos</a></div>
   </div>
   <div class="calendar-card">
-    <div class="cal-date">13 SEP<span class="cal-month">Todo el día</span></div>
+    <div class="cal-date" style="color:#7c6dab">TORNEO NOCTURNO<span class="cal-month">Por DEFINIR</span></div>
     <div class="cal-divider"></div>
-    <div class="cal-info"><h3>Playoffs Finales</h3><p>Sábado · Solo equipos que hayan disputado todos los enfrentamientos de la fase regular</p></div>
-    <div class="cal-badge"><a href="Playofs"></a>NO Disponible</div>
+    <div class="cal-info"><h3>JULIO - fecha por definir</h3><p>Torneo nocturno por parejas de la Liga</p></div>
+    <div class="cal-badge"><a href="#torneo-nocturno">Ver info →</a></div>
   </div>
-
+  <div class="calendar-card">
+    <div class="cal-date" style="color:#c9a84c">Playoffs Finales<span class="cal-month">Todo el día</span></div>
+    <div class="cal-divider"></div>
+    <div class="cal-info"><h3>13 SEP</h3><p>Sábado · Solo equipos que hayan disputado todos los enfrentamientos de la fase regular</p></div>
+    <div class="cal-badge"><a href="#playoffs" >Ver info →</a></div>
+  </div>
   <div class="section-label" style="margin-top:4rem">Categorías</div>
   <div class="cats-grid">
     <div class="cat-card"><span class="cat-name">Future</span><span class="cat-type">Masculino</span></div>
@@ -578,23 +699,25 @@
 <!-- PATROCINADORES -->
 <div class="sponsor-strip">
   <span class="sponsor-label">Patrocinadores</span>
-  <div class="sponsor-marquee">
-    <div class="sponsor-track">
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+  </div>
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
     </div>
   </div>
 </div>
@@ -616,64 +739,59 @@
 <!-- PATROCINADORES -->
 <div class="sponsor-strip">
   <span class="sponsor-label">Patrocinadores</span>
-  <div class="sponsor-marquee">
-    <div class="sponsor-track">
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+  </div>
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
     </div>
   </div>
 </div>
 
 <!-- EQUIPOS -->
 <section id="equipos">
-<div class="section-label">Participantes</div>
-<div class="equipos-header">
-  <h2 class="section-title">Equipos<br>& <em>Jugadores</em> APuntados</h2>
-  <a href="" class="clasificacion-btn">VER EN XPORTY</a>
-</div>
-<div class="equipos-tabs">
-  <button class="tab-btn active" onclick="showTab('future',this)">Future</button>
-  <button class="tab-btn" onclick="showTab('q500',this)">500</button>
-  <button class="tab-btn" onclick="showTab('q1000',this)">1000</button>
-  <button class="tab-btn" onclick="showTab('granslam',this)">Gran Slam</button>
-  <button class="tab-btn" onclick="showTab('femenino',this)">1000 Femenino</button>
-</div>
+  <div class="section-label">Participantes</div>
+  <div class="equipos-header">
+    <h2 class="section-title">Equipos<br>& <em>Jugadores</em> Apuntados</h2>
+  </div>
+  <div class="equipos-tabs">
+    <button class="tab-btn active" onclick="showTab('future',this)">Future</button>
+    <button class="tab-btn" onclick="showTab('q500',this)">500</button>
+    <button class="tab-btn" onclick="showTab('q1000',this)">1000</button>
+    <button class="tab-btn" onclick="showTab('granslam',this)">Gran Slam</button>
+    <button class="tab-btn" onclick="showTab('femenino',this)">1000 Femenino</button>
+  </div>
 
   <!-- FUTURE -->
   <div id="tab-future" class="tab-panel active">
     <div class="equipos-grid">
       <div class="equipo-card">
         <div class="equipo-header"><div class="equipo-escudo">AM</div><div><div class="equipo-name">Al milímetro FKL</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Lucas Mateussi</span><span class="jugador-chip">Benito Doñoro Holguin</span><span class="jugador-chip">Ruben Naranjo Ramos</span><span class="jugador-chip">Germán Pool</span><span class="jugador-chip">Alex Gorobsov</span><span class="jugador-chip libre">+ plaza libre</span><span class="jugador-chip libre">+ plaza libre</span>
-        </div>
+        <div class="equipo-jugadores"><span class="jugador-chip">Lucas Mateussi</span><span class="jugador-chip">Benito Doñoro Holguin</span><span class="jugador-chip">Ruben Naranjo Ramos</span><span class="jugador-chip">Germán Pool</span><span class="jugador-chip">Alex Gorobsov</span><span class="jugador-chip libre">+ plaza libre</span><span class="jugador-chip libre">+ plaza libre</span></div>
         <div class="equipo-meta"><div class="equipo-num">5<span>jugadores</span></div></div>
       </div>
       <div class="equipo-card">
         <div class="equipo-header"><div class="equipo-escudo">DP</div><div><div class="equipo-name">Direpack Pádel Team</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Luis Vázquez</span><span class="jugador-chip">Manuel Caceres</span><span class="jugador-chip">Sergio Martín</span><span class="jugador-chip">Gonzalo Vázquez</span><span class="jugador-chip">José María Pérez</span><span class="jugador-chip">Antonio Mateo Reyes</span><span class="jugador-chip">Alejandro Sierra</span><span class="jugador-chip">Mario Cáceres Morales</span><span class="jugador-chip">Salvador Muñoz Albarran</span>
-        </div>
+        <div class="equipo-jugadores"><span class="jugador-chip">Luis Vázquez</span><span class="jugador-chip">Manuel Caceres</span><span class="jugador-chip">Sergio Martín</span><span class="jugador-chip">Gonzalo Vázquez</span><span class="jugador-chip">José María Pérez</span><span class="jugador-chip">Antonio Mateo Reyes</span><span class="jugador-chip">Alejandro Sierra</span><span class="jugador-chip">Mario Cáceres Morales</span><span class="jugador-chip">Salvador Muñoz Albarran</span></div>
         <div class="equipo-meta"><div class="equipo-num">9<span>jugadores</span></div></div>
       </div>
       <div class="equipo-card">
         <div class="equipo-header"><div class="equipo-escudo">MI</div><div><div class="equipo-name">Minnesota Future</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Pablo Carmona Martínez</span><span class="jugador-chip">Jorge San Martín Moreno</span><span class="jugador-chip">Carlos Martín Fernández</span><span class="jugador-chip">Raul Lara Gamez</span><span class="jugador-chip">Luis Gotor Ramos</span><span class="jugador-chip">Félix Vidarte Vidarte</span><span class="jugador-chip">Javier Alcaine Gómez</span><span class="jugador-chip">Marco Bullones Subirats</span><span class="jugador-chip">Raúl Vera Martín</span><span class="jugador-chip">Sergio Fernández Menéndez</span>
-        </div>
+        <div class="equipo-jugadores"><span class="jugador-chip">Pablo Carmona Martínez</span><span class="jugador-chip">Jorge San Martín Moreno</span><span class="jugador-chip">Carlos Martín Fernández</span><span class="jugador-chip">Raul Lara Gamez</span><span class="jugador-chip">Luis Gotor Ramos</span><span class="jugador-chip">Félix Vidarte Vidarte</span><span class="jugador-chip">Javier Alcaine Gómez</span><span class="jugador-chip">Marco Bullones Subirats</span><span class="jugador-chip">Raúl Vera Martín</span><span class="jugador-chip">Sergio Fernández Menéndez</span></div>
         <div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div>
       </div>
       <div class="equipo-card slot-libre">
@@ -687,342 +805,345 @@
   <!-- 500 -->
   <div id="tab-q500" class="tab-panel">
     <div class="equipos-grid">
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">KN</div><div><div class="equipo-name">Kaneki</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Ismael Vinagrero El Bahja</span><span class="jugador-chip">Adérito Barbosa Chaves</span><span class="jugador-chip">Alejandro Gambero Millan</span><span class="jugador-chip">Ismael García Fernández</span><span class="jugador-chip">Adrián Manzano Bonilla</span><span class="jugador-chip">José Luis García Granados</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">6<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">LPJ</div><div><div class="equipo-name">Las Perras Juguetonas</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Francisco Antonio Calvo Mesa</span><span class="jugador-chip">Marco Hidalgo Florido</span><span class="jugador-chip">Oscar Valera Lapido</span><span class="jugador-chip">Victor Villodres</span><span class="jugador-chip">Alejandro Garcia Palazuelos</span><span class="jugador-chip">Yeray Salazar</span><span class="jugador-chip">Victor González Banderas</span><span class="jugador-chip">David González Valverde</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">OR</div><div><div class="equipo-name">Octava Resaca</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Gabriel García Gallardo</span><span class="jugador-chip">Francisco Molina Baez</span><span class="jugador-chip">Hugo Prados Jiménez</span><span class="jugador-chip">Rafael González Conejo</span><span class="jugador-chip">David Rodríguez Pérez</span><span class="jugador-chip">Gaby García</span><span class="jugador-chip">Sergio Rico Ramos</span><span class="jugador-chip">Adrián Cortadi Rodríguez</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">PV</div><div><div class="equipo-name">Pádel Virreinas</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">David Garcia Montaño</span><span class="jugador-chip">Gabriel Martín Vilchez</span><span class="jugador-chip">Vicente Muñoz Jurado</span><span class="jugador-chip">Miguel Angel Sanchez</span><span class="jugador-chip">Antonio Galván Collado</span><span class="jugador-chip">Matias Marugan De La Torre</span><span class="jugador-chip">Víctor Villalta Chavet</span><span class="jugador-chip">José Antonio Gámez Zurita</span><span class="jugador-chip">Fernando Parra Zurita</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">9<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">PN</div><div><div class="equipo-name">Panthers</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">José Damián Aranda Fuentes</span><span class="jugador-chip">Francisco Jesús Morales Carrasco</span><span class="jugador-chip">Juan Sáez</span><span class="jugador-chip">Juan López Díaz</span><span class="jugador-chip">Grego González</span><span class="jugador-chip">Pedro Jesús Martos García</span><span class="jugador-chip">Sergio Padilla Lopez</span><span class="jugador-chip">Christian Jiménez Pasamar</span><span class="jugador-chip">Roberto Perez Lobato</span><span class="jugador-chip">Juan López</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">PF</div><div><div class="equipo-name">Pink Flamingos United</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Alejo Herrera</span><span class="jugador-chip">Juan Ruiz</span><span class="jugador-chip">Jose Luis Latorre Ghiotti</span><span class="jugador-chip">Jose Rubio Rodriguez</span><span class="jugador-chip">Pablo Muñoz Ramírez</span><span class="jugador-chip">Harold Madams Lopez</span><span class="jugador-chip">Alvaro Marín Romero</span><span class="jugador-chip">Ross Morris</span><span class="jugador-chip">Eduardo Castro Casado</span><span class="jugador-chip">Javier Rodriguez Bravo</span><span class="jugador-chip">Moritz Straetz</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">11<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">SPA</div><div><div class="equipo-name">SPN Riders Academy</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Jesús López Díaz</span><span class="jugador-chip">Alex Millan</span><span class="jugador-chip">Alejandro Corona Iglesias</span><span class="jugador-chip">Juan José Rodríguez Rodríguez</span><span class="jugador-chip">Jose Carlos Cueto Florido</span><span class="jugador-chip">Harold Madams</span><span class="jugador-chip">Pablo Rubio</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">7<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card slot-libre">
-        <span style="font-size:2rem;opacity:0.12;">+</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span>
-        <a href="https://wa.me/34747494352" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a>
-      </div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">KN</div><div><div class="equipo-name">Kaneki</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Ismael Vinagrero El Bahja</span><span class="jugador-chip">Adérito Barbosa Chaves</span><span class="jugador-chip">Alejandro Gambero Millan</span><span class="jugador-chip">Ismael García Fernández</span><span class="jugador-chip">Adrián Manzano Bonilla</span><span class="jugador-chip">José Luis García Granados</span></div><div class="equipo-meta"><div class="equipo-num">6<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">LPJ</div><div><div class="equipo-name">Las Perras Juguetonas</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Francisco Antonio Calvo Mesa</span><span class="jugador-chip">Marco Hidalgo Florido</span><span class="jugador-chip">Oscar Valera Lapido</span><span class="jugador-chip">Victor Villodres</span><span class="jugador-chip">Alejandro Garcia Palazuelos</span><span class="jugador-chip">Yeray Salazar</span><span class="jugador-chip">Victor González Banderas</span><span class="jugador-chip">David González Valverde</span></div><div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">OR</div><div><div class="equipo-name">Octava Resaca</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Gabriel García Gallardo</span><span class="jugador-chip">Francisco Molina Baez</span><span class="jugador-chip">Hugo Prados Jiménez</span><span class="jugador-chip">Rafael González Conejo</span><span class="jugador-chip">David Rodríguez Pérez</span><span class="jugador-chip">Gaby García</span><span class="jugador-chip">Sergio Rico Ramos</span><span class="jugador-chip">Adrián Cortadi Rodríguez</span></div><div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">PV</div><div><div class="equipo-name">Pádel Virreinas</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">David Garcia Montaño</span><span class="jugador-chip">Gabriel Martín Vilchez</span><span class="jugador-chip">Vicente Muñoz Jurado</span><span class="jugador-chip">Miguel Angel Sanchez</span><span class="jugador-chip">Antonio Galván Collado</span><span class="jugador-chip">Matias Marugan De La Torre</span><span class="jugador-chip">Víctor Villalta Chavet</span><span class="jugador-chip">José Antonio Gámez Zurita</span><span class="jugador-chip">Fernando Parra Zurita</span></div><div class="equipo-meta"><div class="equipo-num">9<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">PN</div><div><div class="equipo-name">Panthers</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">José Damián Aranda Fuentes</span><span class="jugador-chip">Francisco Jesús Morales Carrasco</span><span class="jugador-chip">Juan Sáez</span><span class="jugador-chip">Juan López Díaz</span><span class="jugador-chip">Grego González</span><span class="jugador-chip">Pedro Jesús Martos García</span><span class="jugador-chip">Sergio Padilla Lopez</span><span class="jugador-chip">Christian Jiménez Pasamar</span><span class="jugador-chip">Roberto Perez Lobato</span><span class="jugador-chip">Juan López</span></div><div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">PF</div><div><div class="equipo-name">Pink Flamingos United</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Alejo Herrera</span><span class="jugador-chip">Juan Ruiz</span><span class="jugador-chip">Jose Luis Latorre Ghiotti</span><span class="jugador-chip">Jose Rubio Rodriguez</span><span class="jugador-chip">Pablo Muñoz Ramírez</span><span class="jugador-chip">Harold Madams Lopez</span><span class="jugador-chip">Alvaro Marín Romero</span><span class="jugador-chip">Ross Morris</span><span class="jugador-chip">Eduardo Castro Casado</span><span class="jugador-chip">Javier Rodriguez Bravo</span><span class="jugador-chip">Moritz Straetz</span></div><div class="equipo-meta"><div class="equipo-num">11<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">SPA</div><div><div class="equipo-name">SPN Riders Academy</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Jesús López Díaz</span><span class="jugador-chip">Alex Millan</span><span class="jugador-chip">Alejandro Corona Iglesias</span><span class="jugador-chip">Juan José Rodríguez Rodríguez</span><span class="jugador-chip">Jose Carlos Cueto Florido</span><span class="jugador-chip">Harold Madams</span><span class="jugador-chip">Pablo Rubio</span></div><div class="equipo-meta"><div class="equipo-num">7<span>jugadores</span></div></div></div>
+      <div class="equipo-card slot-libre"><span style="font-size:2rem;opacity:0.12;">+</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span><a href="https://wa.me/34747494352" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a></div>
     </div>
   </div>
 
   <!-- 1000 -->
   <div id="tab-q1000" class="tab-panel">
     <div class="equipos-grid">
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">CB</div><div><div class="equipo-name">Cora Burgers</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores"><span class="jugador-chip">Antonio Cabrera Alba</span><span class="jugador-chip">Jose Maria Cobos Galisteo</span></div>
-        <div class="equipo-meta"><div class="equipo-num">2<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">EG</div><div><div class="equipo-name">Estrellados Galicia</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Daniel Pérez Tardaguila</span><span class="jugador-chip">Alejandro Gámez Silva</span><span class="jugador-chip">Sergio Luque Muñoz</span><span class="jugador-chip">Fernando Rodes Vazquez</span><span class="jugador-chip">Pablo Martin Perez</span><span class="jugador-chip">Sergio Fuentes Garcia</span><span class="jugador-chip">Daniel Jiménez Palmero</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">7<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">IP</div><div><div class="equipo-name">Insbesa Padel</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Javier Moreno Pérez</span><span class="jugador-chip">Jesús Diaz González</span><span class="jugador-chip">Antonio Escobar Laure</span><span class="jugador-chip">Andres Diaz Gonzalez</span><span class="jugador-chip">Víctor Javier Benítez Sánchez</span><span class="jugador-chip">Migue Jorge Romero Gomez</span><span class="jugador-chip">Juan Miguel Padilla Santos</span><span class="jugador-chip">Jose Manuel Del Árbol Sánchez</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">LO</div><div><div class="equipo-name">LO&AR Global Services</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Diego José López Arias</span><span class="jugador-chip">Sergio Rosas Bueno</span><span class="jugador-chip">Fernando Iván Sevilla Valderama</span><span class="jugador-chip">Antonio Jesús García García</span><span class="jugador-chip">Juan Francisco Carvajal Paniagua</span><span class="jugador-chip">Juan Ignacio Díez González</span><span class="jugador-chip">Juan Pablo Bernay</span><span class="jugador-chip">Javier Gomez De Urda Jimenez</span><span class="jugador-chip">Alejandro Domínguez</span><span class="jugador-chip">Enrique Lopez</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">LE</div><div><div class="equipo-name">Los Estrellaos — Clínica Dental Martínez Mendez</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Rafael Martinez Mendez</span><span class="jugador-chip">Pablo Quesada Molina</span><span class="jugador-chip">Gil García Manzanares</span><span class="jugador-chip">Mauro Galdamez Mateu</span><span class="jugador-chip">Javier Palomo Jiménez</span><span class="jugador-chip">José Oliverio Cabrera Pérez</span><span class="jugador-chip">Angel Fernandez Llaneras</span><span class="jugador-chip">Francisco Javier Gomez Sanchez</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card slot-libre">
-        <span style="font-size:2rem;opacity:0.12;">+</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span>
-        <a href="https://wa.me/34747494352" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a>
-      </div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">CB</div><div><div class="equipo-name">Cora Burgers</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Antonio Cabrera Alba</span><span class="jugador-chip">Jose Maria Cobos Galisteo</span></div><div class="equipo-meta"><div class="equipo-num">2<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">EG</div><div><div class="equipo-name">Estrellados Galicia</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Daniel Pérez Tardaguila</span><span class="jugador-chip">Alejandro Gámez Silva</span><span class="jugador-chip">Sergio Luque Muñoz</span><span class="jugador-chip">Fernando Rodes Vazquez</span><span class="jugador-chip">Pablo Martin Perez</span><span class="jugador-chip">Sergio Fuentes Garcia</span><span class="jugador-chip">Daniel Jiménez Palmero</span></div><div class="equipo-meta"><div class="equipo-num">7<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">IP</div><div><div class="equipo-name">Insbesa Padel</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Javier Moreno Pérez</span><span class="jugador-chip">Jesús Diaz González</span><span class="jugador-chip">Antonio Escobar Laure</span><span class="jugador-chip">Andres Diaz Gonzalez</span><span class="jugador-chip">Víctor Javier Benítez Sánchez</span><span class="jugador-chip">Migue Jorge Romero Gomez</span><span class="jugador-chip">Juan Miguel Padilla Santos</span><span class="jugador-chip">Jose Manuel Del Árbol Sánchez</span></div><div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">LO</div><div><div class="equipo-name">LO&AR Global Services</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Diego José López Arias</span><span class="jugador-chip">Sergio Rosas Bueno</span><span class="jugador-chip">Fernando Iván Sevilla Valderama</span><span class="jugador-chip">Antonio Jesús García García</span><span class="jugador-chip">Juan Francisco Carvajal Paniagua</span><span class="jugador-chip">Juan Ignacio Díez González</span><span class="jugador-chip">Juan Pablo Bernay</span><span class="jugador-chip">Javier Gomez De Urda Jimenez</span><span class="jugador-chip">Alejandro Domínguez</span><span class="jugador-chip">Enrique Lopez</span></div><div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">LE</div><div><div class="equipo-name">Los Estrellaos — Clínica Dental Martínez Mendez</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Rafael Martinez Mendez</span><span class="jugador-chip">Pablo Quesada Molina</span><span class="jugador-chip">Gil García Manzanares</span><span class="jugador-chip">Mauro Galdamez Mateu</span><span class="jugador-chip">Javier Palomo Jiménez</span><span class="jugador-chip">José Oliverio Cabrera Pérez</span><span class="jugador-chip">Angel Fernandez Llaneras</span><span class="jugador-chip">Francisco Javier Gomez Sanchez</span></div><div class="equipo-meta"><div class="equipo-num">8<span>jugadores</span></div></div></div>
+      <div class="equipo-card slot-libre"><span style="font-size:2rem;opacity:0.12;">+</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span><a href="https://wa.me/34747494352" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a></div>
     </div>
   </div>
 
   <!-- GRAN SLAM -->
   <div id="tab-granslam" class="tab-panel">
     <div class="equipos-grid">
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">DA</div><div><div class="equipo-name">Discoteca Andén</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Juan Carlos Arjona</span><span class="jugador-chip">Jose Manuel Rojo Lozano</span><span class="jugador-chip">Tiago Segovia Antuña</span><span class="jugador-chip">Carlos Peña</span><span class="jugador-chip">Iván Lago Guerreira</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">5<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">REV</div><div><div class="equipo-name">Revolution</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Raúl Rodríguez Fernández</span><span class="jugador-chip">Fernando Medina Pérez</span><span class="jugador-chip">Alejandro Gonzalez Pineda</span><span class="jugador-chip">Sasha Trujillo Martín</span><span class="jugador-chip">Roberto Sánchez Luna</span><span class="jugador-chip">David Arjona Civantos</span><span class="jugador-chip">Ionian Antonelly Carballo Hernadez</span><span class="jugador-chip">Julio Álvarez Luque</span><span class="jugador-chip">Charlie Montañez Wenceslá</span><span class="jugador-chip">Pepe Pulido</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">RB</div><div><div class="equipo-name">Rosario's Burger</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Domingo Jose Sanchez Rueda</span><span class="jugador-chip">Manuel Campaña Expósito</span><span class="jugador-chip">Cristian Montalbán Nieto</span><span class="jugador-chip">Álvaro Amo Lledó</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">4<span>jugadores</span></div></div>
-      </div>
-      <div class="equipo-card slot-libre">
-        <span style="font-size:2rem;opacity:0.12;">+</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span>
-        <a href="https://wa.me/34747494352" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a>
-      </div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">DA</div><div><div class="equipo-name">Discoteca Andén</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Juan Carlos Arjona</span><span class="jugador-chip">Jose Manuel Rojo Lozano</span><span class="jugador-chip">Tiago Segovia Antuña</span><span class="jugador-chip">Carlos Peña</span><span class="jugador-chip">Iván Lago Guerreira</span></div><div class="equipo-meta"><div class="equipo-num">5<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">REV</div><div><div class="equipo-name">Revolution</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Raúl Rodríguez Fernández</span><span class="jugador-chip">Fernando Medina Pérez</span><span class="jugador-chip">Alejandro Gonzalez Pineda</span><span class="jugador-chip">Sasha Trujillo Martín</span><span class="jugador-chip">Roberto Sánchez Luna</span><span class="jugador-chip">David Arjona Civantos</span><span class="jugador-chip">Ionian Antonelly Carballo Hernadez</span><span class="jugador-chip">Julio Álvarez Luque</span><span class="jugador-chip">Charlie Montañez Wenceslá</span><span class="jugador-chip">Pepe Pulido</span></div><div class="equipo-meta"><div class="equipo-num">10<span>jugadores</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">RB</div><div><div class="equipo-name">Rosario's Burger</div><div class="equipo-capitan">Capitán: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Domingo Jose Sanchez Rueda</span><span class="jugador-chip">Manuel Campaña Expósito</span><span class="jugador-chip">Cristian Montalbán Nieto</span><span class="jugador-chip">Álvaro Amo Lledó</span></div><div class="equipo-meta"><div class="equipo-num">4<span>jugadores</span></div></div></div>
+      <div class="equipo-card slot-libre"><span style="font-size:2rem;opacity:0.12;">+</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span><a href="https://wa.me/34747494352" target="_blank" style="color:var(--granate-light);font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a></div>
     </div>
   </div>
 
   <!-- FEMENINO -->
   <div id="tab-femenino" class="tab-panel">
     <div class="equipos-grid">
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">MP</div><div><div class="equipo-name">Match Point Pádel</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores"><span class="jugador-chip">Nazaret García Arjona</span></div>
-        <div class="equipo-meta"><div class="equipo-num">1<span>jugadora</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">VA</div><div><div class="equipo-name">Valkyrias</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Gloria Suanes Serrano</span><span class="jugador-chip">Eugenia Mazzucco</span><span class="jugador-chip">Mila Moreno</span><span class="jugador-chip">Susana Santos Prtega</span><span class="jugador-chip">Sylvia Rodríguez Jimenez</span><span class="jugador-chip">Teresa Tome Cordero</span><span class="jugador-chip">Erika Daiana Ortiz Benítez</span><span class="jugador-chip">Claudia González García</span><span class="jugador-chip">Nadia Castellanos Robles</span><span class="jugador-chip">Adriana Pestano Mendoza</span><span class="jugador-chip">Natalia Martín Fuentes</span><span class="jugador-chip">Sofía Laura Algar Berrondo</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">12<span>jugadoras</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">VB</div><div><div class="equipo-name">VanVolean&Beben</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Macarena Paton</span><span class="jugador-chip">Marta Herrera Aller</span><span class="jugador-chip">Yassna Bram</span><span class="jugador-chip">Sonia Alemany Castillo</span><span class="jugador-chip">Blanca Abela Amo</span><span class="jugador-chip">Nadia Comer</span><span class="jugador-chip">Sabina Moyano Torres</span><span class="jugador-chip">Laura Diéguez Ruiz</span><span class="jugador-chip">Jenifer Cuenca Pozo</span><span class="jugador-chip">Ana Moreno Cabeza</span><span class="jugador-chip">Belén Cera Blas</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">11<span>jugadoras</span></div></div>
-      </div>
-      <div class="equipo-card">
-        <div class="equipo-header"><div class="equipo-escudo">VV</div><div><div class="equipo-name">Voleando voy</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div>
-        <div class="equipo-jugadores">
-          <span class="jugador-chip">Patricia López Méndez</span><span class="jugador-chip">Laura Sánchez Lujan</span><span class="jugador-chip">Luisa Campos Pérez</span><span class="jugador-chip">Martina Baroni González</span><span class="jugador-chip">Lara Angulo González</span><span class="jugador-chip">Belén Pérez Trujillo</span><span class="jugador-chip">Beatriz Castillo Moreno</span><span class="jugador-chip">Silvia Swinkels López</span><span class="jugador-chip">Janine Kaiser</span><span class="jugador-chip">Sara Villalón Suárez</span>
-        </div>
-        <div class="equipo-meta"><div class="equipo-num">10<span>jugadoras</span></div></div>
-      </div>
-      <div class="equipo-card slot-libre" style="border-color:rgba(201,168,76,0.15)">
-        <span style="font-size:2rem;opacity:0.12;">+</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span>
-        <a href="https://wa.me/34747494352" target="_blank" style="color:#C9A84C;font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a>
-      </div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">MP</div><div><div class="equipo-name">Match Point Pádel</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Nazaret García Arjona</span></div><div class="equipo-meta"><div class="equipo-num">1<span>jugadora</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">VA</div><div><div class="equipo-name">Valkyrias</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Gloria Suanes Serrano</span><span class="jugador-chip">Eugenia Mazzucco</span><span class="jugador-chip">Mila Moreno</span><span class="jugador-chip">Susana Santos Prtega</span><span class="jugador-chip">Sylvia Rodríguez Jimenez</span><span class="jugador-chip">Teresa Tome Cordero</span><span class="jugador-chip">Erika Daiana Ortiz Benítez</span><span class="jugador-chip">Claudia González García</span><span class="jugador-chip">Nadia Castellanos Robles</span><span class="jugador-chip">Adriana Pestano Mendoza</span><span class="jugador-chip">Natalia Martín Fuentes</span><span class="jugador-chip">Sofía Laura Algar Berrondo</span></div><div class="equipo-meta"><div class="equipo-num">12<span>jugadoras</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">VB</div><div><div class="equipo-name">VanVolean&Beben</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Macarena Paton</span><span class="jugador-chip">Marta Herrera Aller</span><span class="jugador-chip">Yassna Bram</span><span class="jugador-chip">Sonia Alemany Castillo</span><span class="jugador-chip">Blanca Abela Amo</span><span class="jugador-chip">Nadia Comer</span><span class="jugador-chip">Sabina Moyano Torres</span><span class="jugador-chip">Laura Diéguez Ruiz</span><span class="jugador-chip">Jenifer Cuenca Pozo</span><span class="jugador-chip">Ana Moreno Cabeza</span><span class="jugador-chip">Belén Cera Blas</span></div><div class="equipo-meta"><div class="equipo-num">11<span>jugadoras</span></div></div></div>
+      <div class="equipo-card"><div class="equipo-header"><div class="equipo-escudo">VV</div><div><div class="equipo-name">Voleando voy</div><div class="equipo-capitan">Capitana: <strong>—</strong></div></div></div><div class="equipo-jugadores"><span class="jugador-chip">Patricia López Méndez</span><span class="jugador-chip">Laura Sánchez Lujan</span><span class="jugador-chip">Luisa Campos Pérez</span><span class="jugador-chip">Martina Baroni González</span><span class="jugador-chip">Lara Angulo González</span><span class="jugador-chip">Belén Pérez Trujillo</span><span class="jugador-chip">Beatriz Castillo Moreno</span><span class="jugador-chip">Silvia Swinkels López</span><span class="jugador-chip">Janine Kaiser</span><span class="jugador-chip">Sara Villalón Suárez</span></div><div class="equipo-meta"><div class="equipo-num">10<span>jugadoras</span></div></div></div>
+      <div class="equipo-card slot-libre" style="border-color:rgba(201,168,76,0.15)"><span style="font-size:2rem;opacity:0.12;">+</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:2px;color:rgba(245,230,200,0.18);text-transform:uppercase;">Plaza disponible</span><a href="https://wa.me/34747494352" target="_blank" style="color:#C9A84C;font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:1px;text-decoration:none;">Inscribe tu equipo →</a></div>
     </div>
   </div>
 </section>
 
-<!-- =====================================================
-     FASE REGULAR — nueva sección
-     ===================================================== -->
+<!-- PATROCINADORES -->
+<div class="sponsor-strip">
+  <span class="sponsor-label">Patrocinadores</span>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+  </div>
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FASE REGULAR — FONDO CREMA
+     ============================================================ -->
 <div class="fase-regular-wrap" id="FaseRegular">
   <div class="fase-inner">
 
-    <div class="section-label2" style="margin-bottom:0.8rem">Temporada 2026</div>
-    <h2 class="section-title" style="color:var(--crema);margin-bottom:0.5rem;">Fase <em>Regular</em></h2>
-    <p style="color:rgba(245,230,200,0.55);max-width:600px;font-size:0.92rem;line-height:1.7;margin-bottom:3rem;">
-      Cada equipo se enfrenta una vez contra <strong style="color:var(--crema)">todos los rivales de su categoría</strong>.
-      Los capitanes gestionan los resultados en <strong style="color:var(--crema)">Xporty</strong>: el ganador sube el resultado y el rival lo confirma.
+    <div class="section-label-dark" style="margin-bottom:0.8rem">Temporada 2026</div>
+    <h2 class="section-title-dark" style="margin-bottom:0.5rem;">Fase <em>Regular</em></h2>
+    <p style="color:rgba(0,0,0,0.55);max-width:600px;font-size:0.92rem;line-height:1.7;margin-bottom:3rem;">
+      Cada equipo se enfrenta una vez contra <strong style="color:var(--granate-dark)">todos los rivales de su categoría</strong>.
+      Los capitanes gestionan los resultados en <strong style="color:var(--granate-dark)">Xporty</strong>: el ganador sube el resultado y el rival lo confirma.
     </p>
 
     <!-- CÓMO FUNCIONA -->
     <div class="fr-steps">
       <div class="fr-step">
         <div class="fr-step-num">01</div>
-        <div class="fr-step-body">
+        <div>
           <div class="fr-step-title">Se juega el enfrentamiento</div>
           <div class="fr-step-desc">2 partidos (2 pistas) al mejor de 3 sets con punto de oro. Mínimo 4 jugadores por equipo.</div>
         </div>
       </div>
       <div class="fr-step">
         <div class="fr-step-num">02</div>
-        <div class="fr-step-body">
+        <div>
           <div class="fr-step-title">El capitán ganador sube el resultado</div>
-          <div class="fr-step-desc">A través de la app <strong style="color:var(--crema)">Xporty</strong> en un plazo máximo de 12h.</div>
+          <div class="fr-step-desc">A través de la app <strong style="color:var(--granate-dark)">Xporty</strong> en un plazo máximo de 12h.</div>
         </div>
       </div>
       <div class="fr-step">
         <div class="fr-step-num">03</div>
-        <div class="fr-step-body">
+        <div>
           <div class="fr-step-title">El capitán perdedor lo confirma</div>
           <div class="fr-step-desc">La confirmación es obligatoria. Sin ella el resultado queda pendiente de revisión.</div>
         </div>
       </div>
       <div class="fr-step">
         <div class="fr-step-num">04</div>
-        <div class="fr-step-body">
+        <div>
           <div class="fr-step-title">Los puntos se actualizan</div>
-          <div class="fr-step-desc">Ganado: <strong style="color:var(--crema)">+3 pt</strong> &nbsp;·&nbsp; Perdido: <strong style="color:var(--crema)">+1 pt</strong> &nbsp;·&nbsp; Foto con camiseta: <strong style="color:#ffeb38">+1 pt extra</strong></div>
+          <div class="fr-step-desc">Ganado: <strong style="color:var(--granate-dark)">+3 pt</strong> &nbsp;·&nbsp; Perdido: <strong style="color:var(--granate-dark)">+1 pt</strong> &nbsp;·&nbsp; Foto con camiseta: <strong style="color:#8a6800">+1 pt extra</strong></div>
         </div>
       </div>
     </div>
 
-    <!-- TABLA SIMULACIÓN -->
-    <div class="fr-tabla-wrap">
-      <div class="fr-tabla-header">
-        <span class="fr-tabla-title">Simulación de Clasificación</span>
-        <span class="fr-tabla-cat-badge">Ejemplo · Categoría 500</span>
+    <!-- ============================================================
+         CLASIFICACIÓN POR CATEGORÍAS — TABS
+         ============================================================ -->
+    <div class="section-label-dark" style="margin-bottom:0.8rem;margin-top:3.5rem;">Clasificaciones en tiempo real</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--granate-dark);margin-bottom:1.5rem;">
+      Tabla por <span style="color:var(--granate-light)">Categoría</span>
+    </h3>
+
+    <div class="clas-wrap">
+      <!-- Cabecera con título y badge de actualización -->
+      <div class="clas-header">
+        <span class="clas-header-title">Clasificación Liga PSM Teams 2026</span>
+        <span class="clas-update-badge">
+          <span class="clas-update-dot"></span>
+          Se actualiza cada semana
+        </span>
+        <a href="" class="clasificacion-btn">VER EN XPORTY</a>
       </div>
-      <div class="fr-tabla-scroll">
-        <table class="fr-tabla">
-          <thead>
-            <tr>
-              <th class="fr-th-pos">#</th>
-              <th class="fr-th-equipo">Equipo</th>
-              <th>PJ</th>
-              <th>PG</th>
-              <th>PP</th>
-              <th>Pts</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="fr-tr-gold">
-              <td class="fr-td-pos"><span class="fr-pos-badge gold">1</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#A82040"></span>Pink Flamingos United</div></td>
-              <td>7</td><td>6</td><td>1</td><td class="fr-pts">21</td>
-            </tr>
-            <tr class="fr-tr-silver">
-              <td class="fr-td-pos"><span class="fr-pos-badge silver">2</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#4a90d9"></span>Panthers</div></td>
-              <td>7</td><td>5</td><td>2</td><td class="fr-pts">18</td>
-            </tr>
-            <tr class="fr-tr-bronze">
-              <td class="fr-td-pos"><span class="fr-pos-badge bronze">3</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#2ecc71"></span>Pádel Virreinas</div></td>
-              <td>7</td><td>4</td><td>3</td><td class="fr-pts">15</td>
-            </tr>
-            <tr>
-              <td class="fr-td-pos"><span class="fr-pos-badge">4</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#e67e22"></span>Octava Resaca</div></td>
-              <td>7</td><td>3</td><td>4</td><td class="fr-pts">13</td>
-            </tr>
-            <tr>
-              <td class="fr-td-pos"><span class="fr-pos-badge">5</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#9b59b6"></span>Las Perras Juguetonas</div></td>
-              <td>7</td><td>3</td><td>4</td><td class="fr-pts">12</td>
-            </tr>
-            <tr>
-              <td class="fr-td-pos"><span class="fr-pos-badge">6</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#1abc9c"></span>Kaneki</div></td>
-              <td>7</td><td>2</td><td>5</td><td class="fr-pts">10</td>
-            </tr>
-            <tr>
-              <td class="fr-td-pos"><span class="fr-pos-badge">7</span></td>
-              <td><div class="fr-td-equipo"><span class="fr-equipo-dot" style="background:#e74c3c"></span>SPN Riders Academy</div></td>
-              <td>7</td><td>1</td><td>6</td><td class="fr-pts">8</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- Tabs de categoría -->
+      <div class="clas-tabs">
+        <button class="clas-tab-btn active" onclick="showClasTab('clas-future', this)">Future</button>
+        <button class="clas-tab-btn" onclick="showClasTab('clas-q500', this)">500</button>
+        <button class="clas-tab-btn" onclick="showClasTab('clas-q1000', this)">1000</button>
+        <button class="clas-tab-btn" onclick="showClasTab('clas-granslam', this)">Gran Slam</button>
+        <button class="clas-tab-btn" onclick="showClasTab('clas-femenino', this)">1000 Femenino</button>
       </div>
-      <p class="fr-tabla-nota">* Tabla de ejemplo — los datos reales se actualizarán durante la liga en Xporty</p>
-    </div>
+
+      <!-- FUTURE -->
+      <div id="clas-future" class="clas-panel active">
+        <div class="clas-tabla-scroll">
+          <table class="clas-tabla">
+            <thead>
+              <tr>
+                <th style="width:42px">#</th>
+                <th class="clas-th-equipo">Equipo</th>
+                <th title="Partidos Jugados">PJ</th>
+                <th title="Partidos Ganados">PG</th>
+                <th title="Partidos Perdidos">PP</th>
+                <th title="Puntos">Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ▼▼▼ EDITAR: Future — actualizar cada semana ▼▼▼ -->
+              <tr><td><span class="clas-pos-badge gold">1</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#8B1A2E"></span>Al milímetro FKL</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge silver">2</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#4a90d9"></span>Direpack Pádel Team</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge bronze">3</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#2ecc71"></span>Minnesota Future</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <!-- ▲▲▲ FIN EDITAR Future ▲▲▲ -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 500 -->
+      <div id="clas-q500" class="clas-panel">
+        <div class="clas-tabla-scroll">
+          <table class="clas-tabla">
+            <thead>
+              <tr>
+                <th style="width:42px">#</th>
+                <th class="clas-th-equipo">Equipo</th>
+                <th>PJ</th><th>PG</th><th>PP</th><th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ▼▼▼ EDITAR: 500 — actualizar cada semana ▼▼▼ -->
+              <tr class="clas-tr-gold"><td><span class="clas-pos-badge gold">1</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#A82040"></span>Pink Flamingos United</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-silver"><td><span class="clas-pos-badge silver">2</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#4a90d9"></span>Panthers</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-bronze"><td><span class="clas-pos-badge bronze">3</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#2ecc71"></span>Pádel Virreinas</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">4</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#e67e22"></span>Octava Resaca</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">5</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#9b59b6"></span>Las Perras Juguetonas</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">6</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#1abc9c"></span>Kaneki</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">7</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#e74c3c"></span>SPN Riders Academy</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <!-- ▲▲▲ FIN EDITAR 500 ▲▲▲ -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 1000 -->
+      <div id="clas-q1000" class="clas-panel">
+        <div class="clas-tabla-scroll">
+          <table class="clas-tabla">
+            <thead>
+              <tr>
+                <th style="width:42px">#</th>
+                <th class="clas-th-equipo">Equipo</th>
+                <th>PJ</th><th>PG</th><th>PP</th><th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ▼▼▼ EDITAR: 1000 — actualizar cada semana ▼▼▼ -->
+              <tr class="clas-tr-gold"><td><span class="clas-pos-badge gold">1</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#8B1A2E"></span>Insbesa Padel</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-silver"><td><span class="clas-pos-badge silver">2</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#4a90d9"></span>LO&AR Global Services</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-bronze"><td><span class="clas-pos-badge bronze">3</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#2ecc71"></span>Los Estrellaos</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">4</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#e67e22"></span>Estrellados Galicia</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">5</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#9b59b6"></span>Cora Burgers</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <!-- ▲▲▲ FIN EDITAR 1000 ▲▲▲ -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GRAN SLAM -->
+      <div id="clas-granslam" class="clas-panel">
+        <div class="clas-tabla-scroll">
+          <table class="clas-tabla">
+            <thead>
+              <tr>
+                <th style="width:42px">#</th>
+                <th class="clas-th-equipo">Equipo</th>
+                <th>PJ</th><th>PG</th><th>PP</th><th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ▼▼▼ EDITAR: Gran Slam — actualizar cada semana ▼▼▼ -->
+              <tr class="clas-tr-gold"><td><span class="clas-pos-badge gold">1</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#8B1A2E"></span>Revolution</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-silver"><td><span class="clas-pos-badge silver">2</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#4a90d9"></span>Discoteca Andén</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-bronze"><td><span class="clas-pos-badge bronze">3</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#2ecc71"></span>Rosario's Burger</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <!-- ▲▲▲ FIN EDITAR Gran Slam ▲▲▲ -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FEMENINO -->
+      <div id="clas-femenino" class="clas-panel">
+        <div class="clas-tabla-scroll">
+          <table class="clas-tabla">
+            <thead>
+              <tr>
+                <th style="width:42px">#</th>
+                <th class="clas-th-equipo">Equipo</th>
+                <th>PJ</th><th>PG</th><th>PP</th><th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ▼▼▼ EDITAR: 1000 Femenino — actualizar cada semana ▼▼▼ -->
+              <tr class="clas-tr-gold"><td><span class="clas-pos-badge gold">1</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#8B1A2E"></span>Valkyrias</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-silver"><td><span class="clas-pos-badge silver">2</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#c9a84c"></span>VanVolean&Beben</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr class="clas-tr-bronze"><td><span class="clas-pos-badge bronze">3</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#2ecc71"></span>Voleando voy</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <tr><td><span class="clas-pos-badge">4</span></td><td><div class="clas-td-equipo"><span class="clas-equipo-dot" style="background:#4a90d9"></span>Match Point Pádel</div></td><td>—</td><td>—</td><td>—</td><td class="clas-pts">—</td></tr>
+              <!-- ▲▲▲ FIN EDITAR Femenino ▲▲▲ -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- fin clas-wrap -->
 
     <!-- PREMIOS FASE REGULAR -->
-    <div class="section-label2" style="margin-bottom:0.8rem;margin-top:3.5rem;">Premios Fase Regular</div>
-    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--crema);margin-bottom:2rem;">
+    <div class="section-label-dark" style="margin-bottom:0.8rem;margin-top:3.5rem;">Premios Fase Regular</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--granate-dark);margin-bottom:2rem;">
       Por <span style="color:var(--granate-light)">ganar</span> tu categoría
     </h3>
     <div class="fr-premios-grid">
-      <div class="fr-premio-card fr-premio-tbd">
-        <span class="fr-premio-pos">🥇</span>
-        <div class="fr-premio-cat">1er Clasificado</div>
-        <span class="fr-premio-valor">Por determinar</span>
-        <div class="fr-premio-desc">Premio para el campeón de cada categoría. ¡Pronto lo anunciamos!</div>
+      <div class="fr-premio-card fr-premio-tbd"><span class="fr-premio-pos">🥇</span><div class="fr-premio-cat">1er Clasificado</div><span class="fr-premio-valor">Por determinar</span><div class="fr-premio-desc">Premio para el campeón de cada categoría. ¡Pronto lo anunciamos!</div></div>
+      <div class="fr-premio-card fr-premio-tbd"><span class="fr-premio-pos">🥈</span><div class="fr-premio-cat">2º Clasificado</div><span class="fr-premio-valor">Por determinar</span><div class="fr-premio-desc">Premio para el subcampeón de cada categoría. ¡Pronto lo anunciamos!</div></div>
+      <div class="fr-premio-card fr-premio-tbd"><span class="fr-premio-pos">🥉</span><div class="fr-premio-cat">3er Clasificado</div><span class="fr-premio-valor">Por determinar</span><div class="fr-premio-desc">Premio para el tercer puesto de cada categoría. ¡Pronto lo anunciamos!</div></div>
+    </div>
+    <p style="text-align:center;font-size:0.78rem;color:rgba(0,0,0,0.3);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-top:1.5rem;">
+      Los premios se anunciarán próximamente · Sigue <strong style="color:var(--granate)">@psm_fantasy</strong> para estar al tanto
+    </p>
+
+    <!-- HORARIOS FASE REGULAR -->
+    <div class="section-label-dark" style="margin-top:4rem;margin-bottom:0.8rem">Cuándo jugamos</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--granate-dark);margin-bottom:2rem;">Horarios de <span style="color:var(--granate-light)">Juego</span> Fase Regular</h3>
+    <div class="horarios-grid">
+      <div class="horario-card">
+        <h3>Sábados</h3>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">20:00 h</span></div>
       </div>
-      <div class="fr-premio-card fr-premio-tbd">
-        <span class="fr-premio-pos">🥈</span>
-        <div class="fr-premio-cat">2º Clasificado</div>
-        <span class="fr-premio-valor">Por determinar</span>
-        <div class="fr-premio-desc">Premio para el subcampeón de cada categoría. ¡Pronto lo anunciamos!</div>
-      </div>
-      <div class="fr-premio-card fr-premio-tbd">
-        <span class="fr-premio-pos">🥉</span>
-        <div class="fr-premio-cat">3er Clasificado</div>
-        <span class="fr-premio-valor">Por determinar</span>
-        <div class="fr-premio-desc">Premio para el tercer puesto de cada categoría. ¡Pronto lo anunciamos!</div>
+      <div class="horario-card">
+        <h3>Domingos</h3>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
+        <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
       </div>
     </div>
-    <p style="text-align:center;font-size:0.78rem;color:rgba(245,230,200,0.28);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-top:1.5rem;">
-      Los premios se anunciarán próximamente · Sigue <strong style="color:rgba(245,230,200,0.45)">@psm_fantasy</strong> para estar al tanto
-    </p>
 
   </div>
 </div>
 <!-- fin fase regular -->
-<section id="horarios">
-  <div class="section-label">Cuándo jugamos</div>
-  <h2 class="section-title">Horarios<br>de <em>Juego</em> FASE REGULAR</h2>
-  <div class="horarios-grid">
-    <div class="horario-card">
-      <h3>Sábados</h3>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">20:00 h</span></div>
-    </div>
-    <div class="horario-card">
-      <h3>Domingos</h3>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">12:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">13:30 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">17:00 h</span></div>
-      <div class="time-slot"><div class="time-dot"></div><span class="time-val">18:30 h</span></div>
-    </div>
-    <div></div>
+
+<!-- PATROCINADORES -->
+<div class="sponsor-strip">
+  <span class="sponsor-label">Patrocinadores</span>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
   </div>
-</section>
-<!-- RETOS -->
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     RETOS — FONDO CREMA OSCURO
+     ============================================================ -->
 <div class="retos-wrap" id="retos">
   <div class="retos-inner">
-    <div class="section-label2">Durante toda la temporada</div>
-    <h2 class="section-title" style="color:var(--crema)">Retos<br><em>PSM Teams</em></h2>
-    <p style="color:rgba(245,230,200,0.52);max-width:540px;font-size:0.9rem;line-height:1.7;">Partidos amistosos competitivos entre rivales durante la semana. Juega, etiqueta y suma puntos para tu equipo con <strong style="color:var(--crema)">#RetoPSMteams</strong>.</p>
+    <div class="section-label-dark">Durante toda la temporada</div>
+    <h2 class="section-title-dark">Retos<br><em>PSM Teams</em></h2>
+    <p style="color:rgba(0,0,0,0.55);max-width:540px;font-size:0.9rem;line-height:1.7;">Partidos amistosos competitivos entre rivales durante la semana. Juega, etiqueta y suma puntos para tu equipo con <strong style="color:var(--granate-dark)">#RetoPSMteams</strong>.</p>
     <div class="retos-grid">
       <div class="reto-card"><h3>Para que el partido puntúe</h3><ul><li>Crear partido en <strong>Playtomic</strong> con 4 jugadores</li><li>Hacer una <strong>foto en pista</strong></li><li>Finalizarlo con <strong>resultado</strong></li><li>Enviar el <strong>enlace al club</strong></li><li>El club lo comparte en <strong>Instagram Stories</strong></li></ul></div>
       <div class="reto-card"><h3>Condiciones y normas</h3><ul><li>Entre jugadores de <strong>equipos rivales</strong>, misma categoría</li><li>Ambos equipos inscritos en la liga PSM</li><li>No puntúan partidos del <strong>mismo equipo</strong></li><li>No puntúan partidos <strong>no compartidos</strong> por el club</li></ul></div>
@@ -1033,15 +1154,16 @@
     <div class="prize-banner">
       <div style="flex:1;min-width:180px;">
         <div class="section-label2" style="margin-bottom:0.5rem">Premios — Día de Playoffs</div>
-        <p style="font-size:0.8rem;color:rgba(245,230,200,0.48)">Para los campeones del reto de toda la temporada</p>
+        <p style="font-size:0.8rem;color:rgba(245,230,200,0.6)">Para los campeones del reto de toda la temporada</p>
       </div>
       <div class="prize-item"><span class="prize-icon">🏆</span><h4>Equipo campeón del reto</h4><p>Parrillada de equipo + 3 cañas por jugador</p></div>
       <div class="prize-item"><span class="prize-icon">🏓</span><h4>Jugador MVP total</h4><p>Pala de <strong style="color:var(--crema)">gama alta</strong></p></div>
     </div>
 
+    <!-- RANKING RETOS -->
     <div class="ranking-wrap">
-      <div class="section-label2" style="margin-bottom:0.8rem">Ranking de Retos</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--crema);margin-bottom:1.5rem;">
+      <div class="section-label-dark" style="margin-bottom:0.8rem">Ranking de Retos</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--granate-dark);margin-bottom:1.5rem;">
         Top <span style="color:var(--granate-light)">del Reto</span>
       </h3>
       <div class="ranking-toggle">
@@ -1049,66 +1171,138 @@
         <button class="rtoggle-btn" onclick="showRanking('equipos', this)">🛡 Equipos</button>
       </div>
       <div id="ranking-jugadores" class="ranking-panel active">
-        <p style="font-size:0.78rem;color:rgba(245,230,200,0.3);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:1.2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
+        <p style="font-size:0.78rem;color:rgba(0,0,0,0.35);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:1.2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
         <div class="jugadores-list">
           <div class="jugador-row"><div class="jugador-pos">1</div><div class="jugador-avatar">J1</div><div class="jugador-info"><div class="jugador-nombre">Nombre Jugador</div><div class="jugador-equipo-tag">Equipo · Categoría</div></div><div class="jugador-pts"><span class="jugador-pts-num">—</span><span class="jugador-pts-label">pts reto</span></div></div>
           <div class="jugador-row"><div class="jugador-pos">2</div><div class="jugador-avatar">J2</div><div class="jugador-info"><div class="jugador-nombre">Nombre Jugador</div><div class="jugador-equipo-tag">Equipo · Categoría</div></div><div class="jugador-pts"><span class="jugador-pts-num">—</span><span class="jugador-pts-label">pts reto</span></div></div>
           <div class="jugador-row"><div class="jugador-pos">3</div><div class="jugador-avatar">J3</div><div class="jugador-info"><div class="jugador-nombre">Nombre Jugador</div><div class="jugador-equipo-tag">Equipo · Categoría</div></div><div class="jugador-pts"><span class="jugador-pts-num">—</span><span class="jugador-pts-label">pts reto</span></div></div>
-          <div class="jugador-row faded"><div class="jugador-pos">4</div><div class="jugador-avatar" style="background:rgba(245,230,200,0.05)">—</div><div class="jugador-info"><div class="jugador-nombre" style="color:rgba(245,230,200,0.22)">Próximamente</div><div class="jugador-equipo-tag">Liga aún no iniciada</div></div><div class="jugador-pts"><span class="jugador-pts-num" style="color:rgba(245,230,200,0.15)">—</span><span class="jugador-pts-label">pts reto</span></div></div>
-          <div class="jugador-row faded"><div class="jugador-pos">5</div><div class="jugador-avatar" style="background:rgba(245,230,200,0.05)">—</div><div class="jugador-info"><div class="jugador-nombre" style="color:rgba(245,230,200,0.22)">Próximamente</div><div class="jugador-equipo-tag">Liga aún no iniciada</div></div><div class="jugador-pts"><span class="jugador-pts-num" style="color:rgba(245,230,200,0.15)">—</span><span class="jugador-pts-label">pts reto</span></div></div>
+          <div class="jugador-row faded"><div class="jugador-pos">4</div><div class="jugador-avatar" style="background:rgba(0,0,0,0.08)">—</div><div class="jugador-info"><div class="jugador-nombre" style="color:rgba(0,0,0,0.3)">Próximamente</div><div class="jugador-equipo-tag">Liga aún no iniciada</div></div><div class="jugador-pts"><span class="jugador-pts-num" style="color:rgba(0,0,0,0.2)">—</span><span class="jugador-pts-label">pts reto</span></div></div>
+          <div class="jugador-row faded"><div class="jugador-pos">5</div><div class="jugador-avatar" style="background:rgba(0,0,0,0.08)">—</div><div class="jugador-info"><div class="jugador-nombre" style="color:rgba(0,0,0,0.3)">Próximamente</div><div class="jugador-equipo-tag">Liga aún no iniciada</div></div><div class="jugador-pts"><span class="jugador-pts-num" style="color:rgba(0,0,0,0.2)">—</span><span class="jugador-pts-label">pts reto</span></div></div>
         </div>
       </div>
       <div id="ranking-equipos" class="ranking-panel">
-        <p style="font-size:0.78rem;color:rgba(245,230,200,0.3);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:1.2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
+        <p style="font-size:0.78rem;color:rgba(0,0,0,0.35);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:1.2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
         <div class="equipos-rank-list">
           <div class="equipo-rank-row"><div class="equipo-rank-pos">1</div><div class="equipo-rank-badge">EQ</div><div class="equipo-rank-info"><div class="equipo-rank-name">Nombre Equipo</div><div class="equipo-rank-cat">Categoría</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
           <div class="equipo-rank-row"><div class="equipo-rank-pos">2</div><div class="equipo-rank-badge">EQ</div><div class="equipo-rank-info"><div class="equipo-rank-name">Nombre Equipo</div><div class="equipo-rank-cat">Categoría</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
           <div class="equipo-rank-row"><div class="equipo-rank-pos">3</div><div class="equipo-rank-badge">EQ</div><div class="equipo-rank-info"><div class="equipo-rank-name">Nombre Equipo</div><div class="equipo-rank-cat">Categoría</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
-          <div class="equipo-rank-row faded"><div class="equipo-rank-pos">4</div><div class="equipo-rank-badge" style="background:rgba(245,230,200,0.05)">—</div><div class="equipo-rank-info"><div class="equipo-rank-name" style="color:rgba(245,230,200,0.22)">Próximamente</div><div class="equipo-rank-cat">Liga aún no iniciada</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num" style="color:rgba(245,230,200,0.15)">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
-          <div class="equipo-rank-row faded"><div class="equipo-rank-pos">5</div><div class="equipo-rank-badge" style="background:rgba(245,230,200,0.05)">—</div><div class="equipo-rank-info"><div class="equipo-rank-name" style="color:rgba(245,230,200,0.22)">Próximamente</div><div class="equipo-rank-cat">Liga aún no iniciada</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num" style="color:rgba(245,230,200,0.15)">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
+          <div class="equipo-rank-row faded"><div class="equipo-rank-pos">4</div><div class="equipo-rank-badge" style="background:rgba(0,0,0,0.08)">—</div><div class="equipo-rank-info"><div class="equipo-rank-name" style="color:rgba(0,0,0,0.3)">Próximamente</div><div class="equipo-rank-cat">Liga aún no iniciada</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num" style="color:rgba(0,0,0,0.2)">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
+          <div class="equipo-rank-row faded"><div class="equipo-rank-pos">5</div><div class="equipo-rank-badge" style="background:rgba(0,0,0,0.08)">—</div><div class="equipo-rank-info"><div class="equipo-rank-name" style="color:rgba(0,0,0,0.3)">Próximamente</div><div class="equipo-rank-cat">Liga aún no iniciada</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num" style="color:rgba(0,0,0,0.2)">—</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
         </div>
+      </div>
+    </div>
+
+    <!-- HORARIOS RETOS -->
+    <div class="section-label-dark" style="margin-top:3.5rem;margin-bottom:1rem">Cómo participar</div>
+    <div class="horario-card-retos">
+      <h3>Todos los días</h3>
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="time-dot"></div>
+        <span class="time-val" style="font-size:0.88rem;font-weight:400;color:rgba(0,0,0,0.6);letter-spacing:0;">Si tienes a alguien de tu equipo dispuesto a jugar contigo, monta tu partido por Playtomic y mándalo al grupo de retos de la comunidad de WhatsApp. Espera a que se una otra pareja de otro equipo (da igual la categoría) y así sumaréis puntos para vuestro ranking de retos.</span>
+      </div>
+    </div>
+    <p style="font-size:0.72rem;color:rgba(0,0,0,0.3);margin-top:1rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">La asignación de horarios corresponde exclusivamente a la organización.</p>
+
+  </div>
+</div>
+<!-- fin retos -->
+
+<!-- PATROCINADORES -->
+<div class="sponsor-strip">
+  <span class="sponsor-label">Patrocinadores</span>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+  </div>
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TORNEO NOCTURNO — BLOQUEADO -->
+<div class="locked-wrap nocturno-bg" id="torneo-nocturno">
+  <div class="nocturno-stars" id="nocturno-stars"></div>
+  <div class="locked-overlay"></div>
+  <div class="locked-inner">
+    <div class="locked-content">
+      <div class="lock-badge"><span class="lock-icon">🔒</span><span>Próximamente · Fecha por confirmar</span></div>
+      <div class="section-label2" style="margin-bottom:0.8rem;">Julio 2026</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5.5rem);line-height:0.92;color:var(--crema);margin-bottom:1rem;">Torneo<br><span style="color:#7c6dab;">Nocturno</span></h2>
+      <p style="color:rgba(245,230,200,0.45);max-width:560px;font-size:0.9rem;line-height:1.7;margin-bottom:2.5rem;">Torneo por parejas exclusivo para jugadores de la Liga PSM Teams. Formato de noche, fecha exacta por confirmar en Julio. Solo podrán participar jugadores <strong style="color:rgba(245,230,200,0.7)">inscritos en la liga regular</strong>.</p>
+      <div class="locked-preview-grid">
+        <div class="locked-preview-card"><h4>Formato</h4><div class="locked-preview-bar w80"></div><div class="locked-preview-bar w60"></div><div class="locked-preview-bar w70"></div></div>
+        <div class="locked-preview-card"><h4>Categorías</h4><div class="locked-preview-bar w60"></div><div class="locked-preview-bar w80"></div><div class="locked-preview-bar w40"></div></div>
+      </div>
+      <div class="locked-cta-box">
+        <span style="font-size:2.5rem;">🌙</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--crema);margin:0.8rem 0 0.4rem;letter-spacing:2px;">Información no disponible aún</h3>
+        <p>La información del Torneo Nocturno se publicará próximamente. Sigue <strong style="color:rgba(245,230,200,0.6)">@psm_fantasy</strong> para enterarte.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- HORARIOS -->
-
-  <section>
-   <div class="section-label">Cuándo jugamos</div>
-  <h2 class="section-title" style="margin-top:3rem;">Horarios<br>de <em>Juego</em> retos</h2>
-  <div class="horario-card">
-    <h3>Todos los días</h3>
-    <div class="time-slot"><div class="time-dot"></div><span class="time-val" style="font-size:0.85rem;font-weight:400;">Si tienes a alguien de tu equipo dispuesto a jugar contigo monta tu partido con él por Playtomic y mándalo al grupo de retos de la comunidad de WhatsApp. Espera a que se una otra pareja de otro equipo (da igual la categoría) y así sumaréis puntos para vuestro ranking de retos</span></div>
-  </div>
-  <p style="font-size:0.72rem;color:rgba(245,230,200,0.22);margin-top:1rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">La asignación de horarios corresponde exclusivamente a la organización.</p>
-</section>
-
 <!-- PATROCINADORES -->
 <div class="sponsor-strip">
   <span class="sponsor-label">Patrocinadores</span>
-  <div class="sponsor-marquee">
-    <div class="sponsor-track">
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-lg"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
-      <div class="sponsor-item sponsor-xl"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
-      <div class="sponsor-item sponsor-md"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/retlife logo.png" alt="Sponsor"></div>
-      <div class="sponsor-item sponsor-sm"><img src="LOGOS/Recurso 3.png" alt="Sponsor"></div>
+  <div class="sponsor-row">
+    <div class="sponsor-item-static sp-3"><img src="LOGOS/FUSHIMI LOGO.png" alt="Fushimi"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/Talentfy logo.png" alt="Talentfy"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-1"><img src="LOGOS/dutchfelas blanco.png" alt="Dutchfellas"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-2"><img src="LOGOS/retlife logo.png" alt="Retlife"></div>
+    <div class="sponsor-sep"></div>
+    <div class="sponsor-item-static sp-4"><img src="LOGOS/Amotrato blanco.png" alt="Amotrato"></div>
+  </div>
+  <div>
+    <span class="colaborador-label">Colaboradores</span>
+    <div class="colaboradores-row">
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 1"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 2"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 3"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 4"></div>
+      <div class="colab-item"><img src="LOGOS/espaciodisponible.png" alt="Colaborador 5"></div>
     </div>
   </div>
 </div>
 
-
+<!-- PLAYOFFS — BLOQUEADO -->
+<div class="locked-wrap playoffs-bg" id="playoffs">
+  <div class="locked-overlay"></div>
+  <div class="locked-inner">
+    <div class="locked-content">
+      <div class="lock-badge"><span class="lock-icon">🔒</span><span>No disponible · Se activa al finalizar la Fase Regular</span></div>
+      <div class="section-label2" style="margin-bottom:0.8rem;">13 Septiembre 2026</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5.5rem);line-height:0.92;color:var(--crema);margin-bottom:1rem;">Playoffs<br><span style="color:#c9a84c;">Finales</span></h2>
+      <p style="color:rgba(245,230,200,0.45);max-width:560px;font-size:0.9rem;line-height:1.7;margin-bottom:2.5rem;">La gran jornada final de la Liga PSM Teams. Solo participan los equipos que hayan disputado <strong style="color:rgba(245,230,200,0.7)">todos los enfrentamientos de la Fase Regular</strong>. El cuadro de playoffs se genera automáticamente según la clasificación final.</p>
+      <div class="locked-preview-grid">
+        <div class="locked-preview-card"><h4>Cuadro de Brackets</h4><div class="locked-preview-bar w80"></div><div class="locked-preview-bar w60"></div><div class="locked-preview-bar w80"></div><div class="locked-preview-bar w40"></div></div>
+        <div class="locked-preview-card"><h4>Equipos clasificados</h4><div class="locked-preview-bar w60"></div><div class="locked-preview-bar w80"></div><div class="locked-preview-bar w50"></div><div class="locked-preview-bar w70"></div></div>
+      </div>
+      <div class="locked-cta-box">
+        <span style="font-size:2.5rem;">🏆</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--crema);margin:0.8rem 0 0.4rem;letter-spacing:2px;">Disponible tras la Fase Regular</h3>
+        <p>El cuadro de playoffs, clasificaciones definitivas y formato final se publicarán cuando concluya la Fase Regular el <strong style="color:rgba(245,230,200,0.6)">28 de Junio</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HASHTAG -->
 <div class="hashtag-banner">
@@ -1148,6 +1342,31 @@
     document.getElementById('ranking-' + panel).classList.add('active');
     btn.classList.add('active');
   }
+  function showClasTab(id, btn) {
+    document.querySelectorAll('.clas-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.clas-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Estrellas decorativas Torneo Nocturno
+  (function() {
+    const container = document.getElementById('nocturno-stars');
+    if (!container) return;
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.cssText = `
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        width: ${Math.random() < 0.3 ? 3 : 2}px;
+        height: ${Math.random() < 0.3 ? 3 : 2}px;
+        opacity: ${(Math.random() * 0.4 + 0.1).toFixed(2)};
+        animation: starTwinkle ${(Math.random() * 3 + 2).toFixed(1)}s ${(Math.random() * 3).toFixed(1)}s ease-in-out infinite alternate;
+      `;
+      container.appendChild(star);
+    }
+  })();
 </script>
 <script>
 document.querySelectorAll(".jugador-chip").forEach(el => {
@@ -1159,6 +1378,12 @@ document.querySelectorAll(".jugador-chip").forEach(el => {
     const inicial = partes[1].charAt(0).toUpperCase();
     el.textContent = `${nombre} ${inicial}.`;
   }
+});
+const toggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+toggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
 </script>
 </body>

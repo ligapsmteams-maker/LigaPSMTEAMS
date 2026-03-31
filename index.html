@@ -1120,7 +1120,7 @@ nav{
 <div id="cal-locked" style="background:#0a0008;padding:6rem 2rem;position:relative;overflow:hidden;">
   <div class="locked-overlay"></div>
   <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
-    <div class="lock-badge" style="margin-bottom:1.5rem;"><span>🔒</span><span>Calendario de Pistas — Acceso Restringido</span></div>
+    <div class="lock-badge" style="margin-bottom:1.5rem;"><span>🔒</span><span>Calendario de enfrentamientos — Acceso Restringido</span></div>
     <div class="section-label2" style="margin-bottom:0.6rem;">Temporada 2026</div>
     <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,5rem);line-height:0.92;color:var(--crema);margin-bottom:0.8rem;">
       Calendario <span style="color:var(--granate-light);">de Pistas</span>
@@ -1156,7 +1156,7 @@ nav{
 
 <!-- BLOQUE DESBLOQUEADO -->
 <div id="cal-unlocked" style="display:none;">
-<div style="background:#635848;border-top:4px solid var(--granate);padding:5rem 2rem 4rem;" id="calendario-pistas">
+<div style="background:#000000;border-top:4px solid var(--granate);padding:5rem 2rem 4rem;" id="calendario-pistas">
 <div style="max-width:1400px;margin:0 auto;">
 
   <!-- CABECERA -->
@@ -1164,20 +1164,21 @@ nav{
     <div>
       <div class="section-label2" style="margin-bottom:0.5rem;">Temporada 2026</div>
       <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,5rem);line-height:0.9;color:var(--crema);margin-bottom:0.4rem;">
-        Calendario <span style="color:var(--granate-light);">de Pistas</span>
+        Calendario <span style="color:var(--granate-light);">de Partidos</span>
       </h2>
       <p style="color:rgba(245,230,200,0.35);font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:2.5px;text-transform:uppercase;">
-        Horarios · Pistas · Enfrentamientos · Temporada 2026
+        Horarios · Pistas · Enfrentamientos ·
       </p>
     </div>
     <!-- Leyenda / filtros -->
     <div class="cal-legend-wrap" style="display:flex;flex-wrap:wrap;gap:0.4rem;align-items:flex-start;padding-top:0.4rem;">
       <button class="cal-legend-item" data-cat="Gran Slam" onclick="calFilter('Gran Slam',this)">🏆 Gran Slam</button>
-      <button class="cal-legend-item" data-cat="Future"    onclick="calFilter('Future',this)">⚡ Future</button>
-      <button class="cal-legend-item" data-cat="500 G1"    onclick="calFilter('500 G1',this)">🔵 500 G1</button>
-      <button class="cal-legend-item" data-cat="500 G2"    onclick="calFilter('500 G2',this)">🟠 500 G2</button>
       <button class="cal-legend-item" data-cat="1000 Fem"  onclick="calFilter('1000 Fem',this)">🌸 1000 Fem</button>
       <button class="cal-legend-item" data-cat="1000"      onclick="calFilter('1000',this)">💜 1000</button>
+      <button class="cal-legend-item" data-cat="500 G1"    onclick="calFilter('500 G1',this)">🔵 500 G1</button>
+      <button class="cal-legend-item" data-cat="500 G2"    onclick="calFilter('500 G2',this)">🟠 500 G2</button>
+      <button class="cal-legend-item" data-cat="Future"    onclick="calFilter('Future',this)">⚡ Future</button>
+
     </div>
   </div>
 

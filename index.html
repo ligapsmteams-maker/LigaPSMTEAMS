@@ -102,10 +102,10 @@ nav{
   .colab-item { display: flex; align-items: center; justify-content: center; flex-shrink: 0; opacity: 0.7; transition: opacity 0.2s; }
   .colab-item:hover { opacity: 1; }
   .colab-item img { height: 30px; width: auto; object-fit: contain; }
-  .colab-item:nth-child(3) img { height: 40px; }
+  .colab-item:nth-child(3) img { height: 15px; }
   @media (max-width: 600px) {
     .sp-1 img { height: 35px; } .sp-2 img { height: 30px; } .sp-3 img { height: 20px; } .sp-4 img { height: 15px; } .sp-5 img { height: 30px; }
-    .sponsor-row { gap: 1.5rem; } .sponsor-sep { display: none; } .colab-item img { height: 10px; }
+    .sponsor-row { gap: 1.5rem; } .sponsor-sep { display: none; } .colab-item img { height: 1.5rem; width: auto; }
   }
 
   section { padding: 7rem 2rem; max-width: 1200px; margin: 0 auto; }
@@ -591,6 +591,7 @@ nav{
       <div class="colab-item"><img src="LOGOS/LOGO CASA LUCAS.png" alt="Colaborador 1"></div>
       <div class="colab-item"><img src="LOGOS/ovidio logo.png" alt="Colaborador 3"></div>
       <div class="colab-item"><img src="LOGOS/LOGO ELCABRA.png" alt="Colaborador 5"></div>
+      <div class="colab-item"><img src="LOGOS/Che bolu Blanco.png" alt="Colaborador 5"></div>
     </div>
   </div>
 </div>
@@ -654,6 +655,8 @@ nav{
       <div class="colab-item"><img src="LOGOS/LOGO CASA LUCAS.png" alt="Colaborador 1"></div>
       <div class="colab-item"><img src="LOGOS/ovidio logo.png" alt="Colaborador 3"></div>
       <div class="colab-item"><img src="LOGOS/LOGO ELCABRA.png" alt="Colaborador 5"></div>
+            <div class="colab-item"><img src="LOGOS/Che bolu Blanco.png" alt="Colaborador 5"></div>
+
     </div>
   </div>
 </div>
@@ -692,6 +695,7 @@ nav{
       <div class="colab-item"><img src="LOGOS/LOGO CASA LUCAS.png" alt="Colaborador 1"></div>
       <div class="colab-item"><img src="LOGOS/ovidio logo.png" alt="Colaborador 3"></div>
       <div class="colab-item"><img src="LOGOS/LOGO ELCABRA.png" alt="Colaborador 5"></div>
+            <div class="colab-item"><img src="LOGOS/Che bolu Blanco.png" alt="Colaborador 5"></div>
     </div>
   </div>
 </div>
@@ -820,6 +824,8 @@ nav{
       <div class="colab-item"><img src="LOGOS/LOGO CASA LUCAS.png" alt="Colaborador 1"></div>
       <div class="colab-item"><img src="LOGOS/ovidio logo.png" alt="Colaborador 3"></div>
       <div class="colab-item"><img src="LOGOS/LOGO ELCABRA.png" alt="Colaborador 5"></div>
+      <div class="colab-item"><img src="LOGOS/Che bolu Blanco.png" alt="Colaborador 1"></div>
+
     </div>
   </div>
 </div>
@@ -856,58 +862,220 @@ nav{
     <button class="rtoggle-btn active" onclick="showRanking('jugadores', this)">👤 Jugadores</button>
     <button class="rtoggle-btn" onclick="showRanking('equipos', this)">🛡 Equipos</button>
   </div>
- 
+
   <!-- PANEL JUGADORES -->
   <div id="ranking-jugadores" class="ranking-panel active">
     <p style="font-size:0.78rem;color:rgba(0,0,0,0.35);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:1.2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
     <div class="jugadores-list">
+
       <!-- TOP 5 siempre visibles -->
-      <div class="jugador-row"><div class="jugador-pos">1</div><div class="jugador-info"><div class="jugador-nombre">Oscar Varela</div><div class="jugador-equipo-tag">Las Perras Juguetonas · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div></div>
-      <div class="jugador-row"><div class="jugador-pos">2</div><div class="jugador-info"><div class="jugador-nombre">Francisco Calvo</div><div class="jugador-equipo-tag">Las Perras Juguetonas · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div></div>
-      <div class="jugador-row"><div class="jugador-pos">3</div><div class="jugador-info"><div class="jugador-nombre">Jesus Lopez</div><div class="jugador-equipo-tag">SPN Riders Academy · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div></div>
-      <div class="jugador-row"><div class="jugador-pos">4</div><div class="jugador-info"><div class="jugador-nombre">Harold Madams</div><div class="jugador-equipo-tag">SPN Riders Academy · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div></div>
-      <div class="jugador-row"><div class="jugador-pos">5</div><div class="jugador-info"><div class="jugador-nombre">Alejo Herrera</div><div class="jugador-equipo-tag">Pink Flamingos United · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div></div>
- 
-      <!-- Resto oculto -->
-      <div class="ranking-extra" id="extra-jugadores" style="display:none;flex-direction:column;gap:0.4rem;">
-        <div class="jugador-row"><div class="jugador-pos">6</div><div class="jugador-info"><div class="jugador-nombre">Alvaro Marin</div><div class="jugador-equipo-tag">Pink Flamingos United · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div></div>
-        <div class="jugador-row"><div class="jugador-pos">7</div><div class="jugador-info"><div class="jugador-nombre">Gonzalo Vera</div><div class="jugador-equipo-tag">Conicars · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div></div>
-        <div class="jugador-row"><div class="jugador-pos">8</div><div class="jugador-info"><div class="jugador-nombre">Santiago Torrens</div><div class="jugador-equipo-tag">Conicars · 500</div></div><div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div></div>
+      <div class="jugador-row">
+        <div class="jugador-pos">1</div>
+        <div class="jugador-info">
+          <div class="jugador-nombre">Oscar Varela</div>
+          <div class="jugador-equipo-tag">Las Perras Juguetonas · 500</div>
+        </div>
+        <div class="jugador-pts"><span class="jugador-pts-num">4</span><span class="jugador-pts-label">pts reto</span></div>
       </div>
-    </div>
- 
+
+      <div class="jugador-row">
+        <div class="jugador-pos">2</div>
+        <div class="jugador-info">
+          <div class="jugador-nombre">Francisco Calvo</div>
+          <div class="jugador-equipo-tag">Las Perras Juguetonas · 500</div>
+        </div>
+        <div class="jugador-pts"><span class="jugador-pts-num">4</span><span class="jugador-pts-label">pts reto</span></div>
+      </div>
+
+      <div class="jugador-row">
+        <div class="jugador-pos">3</div>
+        <div class="jugador-info">
+          <div class="jugador-nombre">Jesus Lopez</div>
+          <div class="jugador-equipo-tag">SPN Riders Academy · 500</div>
+        </div>
+        <div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div>
+      </div>
+
+      <div class="jugador-row">
+        <div class="jugador-pos">4</div>
+        <div class="jugador-info">
+          <div class="jugador-nombre">Harold Madams</div>
+          <div class="jugador-equipo-tag">SPN Riders Academy · 500</div>
+        </div>
+        <div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div>
+      </div>
+
+      <div class="jugador-row">
+        <div class="jugador-pos">5</div>
+        <div class="jugador-info">
+          <div class="jugador-nombre">Luis Gotor</div>
+          <div class="jugador-equipo-tag">Minnesota Future · Future</div>
+        </div>
+        <div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div>
+      </div>
+
+      <!-- Resto oculto (pos 6-14) -->
+      <div class="ranking-extra" id="extra-jugadores" style="display:none;flex-direction:column;gap:0.4rem;">
+
+        <div class="jugador-row">
+          <div class="jugador-pos">6</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Pablo Carmona</div>
+            <div class="jugador-equipo-tag">Minnesota Future · Future</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">7</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Gonzalo Vera</div>
+            <div class="jugador-equipo-tag">Conicars · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">8</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Santiago Torrens</div>
+            <div class="jugador-equipo-tag">Conicars · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">2</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">9</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Alejo Herrera</div>
+            <div class="jugador-equipo-tag">Pink Flamingos United · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">10</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Alvaro Marin</div>
+            <div class="jugador-equipo-tag">Pink Flamingos United · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">11</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Aderito</div>
+            <div class="jugador-equipo-tag">Kaneki · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">12</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Jose Manuel Villo</div>
+            <div class="jugador-equipo-tag">Kaneki · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">13</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Adrian Hoz</div>
+            <div class="jugador-equipo-tag">Purple Panthers · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="jugador-row">
+          <div class="jugador-pos">14</div>
+          <div class="jugador-info">
+            <div class="jugador-nombre">Fran Peña</div>
+            <div class="jugador-equipo-tag">Purple Panthers · 500</div>
+          </div>
+          <div class="jugador-pts"><span class="jugador-pts-num">1</span><span class="jugador-pts-label">pts reto</span></div>
+        </div>
+
+      </div><!-- fin extra-jugadores -->
+    </div><!-- fin jugadores-list -->
+
     <!-- Botón ver más jugadores -->
     <button class="ranking-expand-btn" id="btn-expand-jugadores" onclick="toggleExtra('jugadores')">
-      <span class="expand-label">Ver más jugadores</span>
+      <span class="expand-label">Ver más jugadores (9 más)</span>
       <span class="expand-arrow">▼</span>
     </button>
-  </div>
- 
+  </div><!-- fin panel jugadores -->
+
   <!-- PANEL EQUIPOS -->
   <div id="ranking-equipos" class="ranking-panel">
     <p style="font-size:0.78rem;color:rgba(0,0,0,0.35);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:1.2rem;">Actualizado semanalmente · Puntos acumulados en partidos de reto</p>
     <div class="equipos-rank-list">
-      <!-- TOP 5 siempre visibles (aquí solo hay 4, pero la estructura ya está lista para 5+) -->
-      <div class="equipo-rank-row"><div class="equipo-rank-pos">1</div><div class="equipo-rank-badge">PJ</div><div class="equipo-rank-info"><div class="equipo-rank-name">Las Perras Juguetonas</div><div class="equipo-rank-cat">500</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">4</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
-      <div class="equipo-rank-row"><div class="equipo-rank-pos">2</div><div class="equipo-rank-badge">SR</div><div class="equipo-rank-info"><div class="equipo-rank-name">SPN Riders Academy</div><div class="equipo-rank-cat">500</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">4</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
-      <div class="equipo-rank-row"><div class="equipo-rank-pos">3</div><div class="equipo-rank-badge">PF</div><div class="equipo-rank-info"><div class="equipo-rank-name">Pink Flamingos United</div><div class="equipo-rank-cat">500</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">2</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
-      <div class="equipo-rank-row"><div class="equipo-rank-pos">4</div><div class="equipo-rank-badge">CO</div><div class="equipo-rank-info"><div class="equipo-rank-name">Conicars</div><div class="equipo-rank-cat">500</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">2</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
-      <div class="equipo-rank-row"><div class="equipo-rank-pos">5</div><div class="equipo-rank-badge">EJ</div><div class="equipo-rank-info"><div class="equipo-rank-name">Ejemplo Equipo 5</div><div class="equipo-rank-cat">500</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">1</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
- 
-      <!-- Resto oculto — añade aquí los equipos 6+ cuando los tengas -->
-      <div class="ranking-extra" id="extra-equipos" style="display:none;flex-direction:column;gap:0.4rem;">
-        <div class="equipo-rank-row"><div class="equipo-rank-pos">6</div><div class="equipo-rank-badge">E6</div><div class="equipo-rank-info"><div class="equipo-rank-name">Equipo 6</div><div class="equipo-rank-cat">500</div></div><div class="equipo-rank-pts"><span class="equipo-rank-pts-num">1</span><span class="equipo-rank-pts-label">pts reto</span></div></div>
+
+      <!-- TOP 5 siempre visibles -->
+      <div class="equipo-rank-row">
+        <div class="equipo-rank-pos">1</div>
+        <div class="equipo-rank-badge">PJ</div>
+        <div class="equipo-rank-info"><div class="equipo-rank-name">Las Perras Juguetonas</div><div class="equipo-rank-cat">500</div></div>
+        <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">8</span><span class="equipo-rank-pts-label">pts reto</span></div>
       </div>
-    </div>
- 
+
+      <div class="equipo-rank-row">
+        <div class="equipo-rank-pos">2</div>
+        <div class="equipo-rank-badge">CO</div>
+        <div class="equipo-rank-info"><div class="equipo-rank-name">Conicars</div><div class="equipo-rank-cat">500</div></div>
+        <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">4</span><span class="equipo-rank-pts-label">pts reto</span></div>
+      </div>
+
+      <div class="equipo-rank-row">
+        <div class="equipo-rank-pos">3</div>
+        <div class="equipo-rank-badge">MN</div>
+        <div class="equipo-rank-info"><div class="equipo-rank-name">Minnesota Future</div><div class="equipo-rank-cat">Future</div></div>
+        <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">4</span><span class="equipo-rank-pts-label">pts reto</span></div>
+      </div>
+
+      <div class="equipo-rank-row">
+        <div class="equipo-rank-pos">4</div>
+        <div class="equipo-rank-badge">SR</div>
+        <div class="equipo-rank-info"><div class="equipo-rank-name">SPN Riders Academy</div><div class="equipo-rank-cat">500</div></div>
+        <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">4</span><span class="equipo-rank-pts-label">pts reto</span></div>
+      </div>
+
+      <div class="equipo-rank-row">
+        <div class="equipo-rank-pos">5</div>
+        <div class="equipo-rank-badge">PF</div>
+        <div class="equipo-rank-info"><div class="equipo-rank-name">Pink Flamingos United</div><div class="equipo-rank-cat">500</div></div>
+        <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">2</span><span class="equipo-rank-pts-label">pts reto</span></div>
+      </div>
+
+      <!-- Resto oculto -->
+      <div class="ranking-extra" id="extra-equipos" style="display:none;flex-direction:column;gap:0.4rem;">
+
+        <div class="equipo-rank-row">
+          <div class="equipo-rank-pos">6</div>
+          <div class="equipo-rank-badge">KA</div>
+          <div class="equipo-rank-info"><div class="equipo-rank-name">Kaneki</div><div class="equipo-rank-cat">500</div></div>
+          <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">2</span><span class="equipo-rank-pts-label">pts reto</span></div>
+        </div>
+
+        <div class="equipo-rank-row">
+          <div class="equipo-rank-pos">7</div>
+          <div class="equipo-rank-badge">PP</div>
+          <div class="equipo-rank-info"><div class="equipo-rank-name">Purple Panthers</div><div class="equipo-rank-cat">500</div></div>
+          <div class="equipo-rank-pts"><span class="equipo-rank-pts-num">2</span><span class="equipo-rank-pts-label">pts reto</span></div>
+        </div>
+
+      </div><!-- fin extra-equipos -->
+    </div><!-- fin equipos-rank-list -->
+
     <!-- Botón ver más equipos -->
     <button class="ranking-expand-btn" id="btn-expand-equipos" onclick="toggleExtra('equipos')">
-      <span class="expand-label">Ver más equipos</span>
+      <span class="expand-label">Ver más equipos (2 más)</span>
       <span class="expand-arrow">▼</span>
     </button>
-  </div>
-</div>
-
+  </div><!-- fin panel equipos -->
+</div><!-- fin ranking-wrap -->
     <!-- HORARIOS RETOS -->
     <div class="section-label-dark" style="margin-top:3.5rem;margin-bottom:1rem">Cómo participar</div>
     <div class="horario-card-retos">
@@ -941,6 +1109,8 @@ nav{
       <div class="colab-item"><img src="LOGOS/LOGO CASA LUCAS.png" alt="Colaborador 1"></div>
       <div class="colab-item"><img src="LOGOS/ovidio logo.png" alt="Colaborador 3"></div>
       <div class="colab-item"><img src="LOGOS/LOGO ELCABRA.png" alt="Colaborador 5"></div>
+            <div class="colab-item"><img src="LOGOS/Che bolu Blanco.png" alt="Colaborador 1"></div>
+
     </div>
   </div>
 </div>
@@ -988,6 +1158,8 @@ nav{
       <div class="colab-item"><img src="LOGOS/LOGO CASA LUCAS.png" alt="Colaborador 1"></div>
       <div class="colab-item"><img src="LOGOS/ovidio logo.png" alt="Colaborador 3"></div>
       <div class="colab-item"><img src="LOGOS/LOGO ELCABRA.png" alt="Colaborador 5"></div>
+            <div class="colab-item"><img src="LOGOS/Che bolu Blanco.png" alt="Colaborador 1"></div>
+
     </div>
   </div>
 </div>
